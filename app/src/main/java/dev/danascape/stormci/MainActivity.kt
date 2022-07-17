@@ -17,6 +17,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnRefresh.setOnClickListener {
+            finish()
+            startActivity(getIntent())
+        }
+
         val retrofit = BuildInterface.create().getBuildInfo()
         retrofit.enqueue(object: Callback<BuildModel>{
             @SuppressLint("SetTextI18n")
