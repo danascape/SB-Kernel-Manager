@@ -11,7 +11,7 @@ interface BuildInterface {
     fun getBuildInfo(): Call<BuildModel>
 
     companion object{
-        private val BASE_URL = "https://abhiramshibu.tuxforums.com/~saalim/"
+        private const val BASE_URL = "https://abhiramshibu.tuxforums.com/~saalim/"
 
         fun create(): BuildInterface {
             val retrofit = Retrofit.Builder()
