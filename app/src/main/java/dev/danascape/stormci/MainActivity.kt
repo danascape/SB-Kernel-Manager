@@ -19,7 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRefresh.setOnClickListener {
             finish()
+            overridePendingTransition(0, 0)
             startActivity(getIntent())
+            overridePendingTransition(0, 0)
         }
 
         val retrofit = BuildInterface.create().getBuildInfo()
