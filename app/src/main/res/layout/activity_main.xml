@@ -91,6 +91,7 @@
 
     <Button
         android:id="@+id/btnRefresh"
+        android:background="@drawable/ic_round_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
