@@ -28,18 +28,17 @@ class MainActivity : AppCompatActivity() {
                     Log.d("retrofitResponse", "name: ${resBody.name}")
                     tvName.text = "${resBody.name}"
                     Log.d("retrofitResponse", "device: ${resBody.device}")
-                    tvDevice.text = "${resBody.device}"
+                    tvDevice.text = "Device: ${resBody.device}"
                     Log.d( "retrfitResponse", "branch: ${resBody.branch}" )
-                    tvBranch.text = "${resBody.branch}"
+                    tvBranch.text = "Branch: ${resBody.branch}"
                     Log.d( "retrfitResponse", "status: ${resBody.status}" )
-                    tvStatus.text = "${resBody.status}"
+                    tvStatus.text = "Status: ${resBody.status}"
                 }
             }
 
             override fun onFailure(call: Call<BuildModel>, t: Throwable) {
                 Log.e("retrofitResponse","Error: ${t.message}")
             }
-
         })
     }
 }

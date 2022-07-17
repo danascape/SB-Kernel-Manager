@@ -9,18 +9,3 @@ data class BuildModel(
     val branch: String,
     val status: String
 )
-
-data class BuildDevice(
-    @SerializedName("device")
-    val device: String
-)
-
-data class BuildBranch(
-    @SerializedName("Branch")
-    val branch: String
-)
-
-data class BuildStatus(
-    @SerializedName("Status")
-    val status: String
-)
