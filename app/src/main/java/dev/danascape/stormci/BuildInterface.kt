@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface BuildInterface {
 
-    @GET("test.json")
+    @GET("rom.json")
     fun getBuildInfo(): Call<BuildModel>
 
     companion object{

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                     binding.tvDevice.text = "Device: ${resBody.device}"
                     Log.d( "retrofitResponse", "branch: ${resBody.branch}" )
                     binding.tvBranch.text = "Branch: ${resBody.branch}"
-                    Log.d( "retrofitResponse", "status: ${resBody.status}" )
+                    Log.d( "retrofitResponse", "Build Status: ${resBody.status}" )
                     binding.tvStatus.text = "Status: ${resBody.status}"
                 }
             }
