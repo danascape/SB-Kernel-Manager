@@ -7,8 +7,9 @@
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="386dp"
-        android:layout_height="277dp"
+        android:id="@+id/cardView"
+        android:layout_width="387dp"
+        android:layout_height="219dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
@@ -18,10 +19,10 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029">
+        app:layout_constraintVertical_bias="0.365">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,58 +30,58 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="264dp"
-                android:layout_height="44dp"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="74dp"
+                android:layout_marginEnd="14dp"
                 android:text="ROM Name"
                 android:textColor="#31AF89"
                 android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/tvDevice"
-                android:layout_width="255dp"
-                android:layout_height="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
                 android:layout_below="@+id/tvName"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="74dp"
+                android:layout_marginEnd="13dp"
                 android:text="Device Name"
                 android:textColor="#31AF89"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvBranch"
-                android:layout_width="255dp"
-                android:layout_height="45dp"
-                android:layout_below="@+id/tvDevice"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="74dp"
-                android:text="Branch Name"
-                android:textColor="#31AF89"
-                android:textSize="18sp" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvBranch"-->
+            <!--                android:layout_width="255dp"-->
+            <!--                android:layout_height="45dp"-->
+            <!--                android:layout_below="@+id/tvDevice"-->
+            <!--                android:layout_alignParentStart="true"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_marginStart="17dp"-->
+            <!--                android:layout_marginTop="12dp"-->
+            <!--                android:layout_marginEnd="74dp"-->
+            <!--                android:text="Branch Name"-->
+            <!--                android:textColor="#31AF89"-->
+            <!--                android:textSize="18sp" />-->
 
             <TextView
                 android:id="@+id/tvStatus"
-                android:layout_width="259dp"
-                android:layout_height="35dp"
-                android:layout_below="@+id/tvBranch"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tvDevice"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="17dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="74dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="17dp"
                 android:text="Build Status"
                 android:textColor="#31AF89"
                 android:textSize="18sp" />
@@ -100,5 +101,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMainLogo"
+        android:layout_width="205dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:text="StormBreaker CI"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvLogoPlaceholder"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDashboard"
+        android:layout_width="112dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="12dp"
+        android:text="Dashboard"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMainLogo" />
+
+    <TextView
+        android:id="@+id/tvLogoPlaceholder"
+        android:layout_width="44dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

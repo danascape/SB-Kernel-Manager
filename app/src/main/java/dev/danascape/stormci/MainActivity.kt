@@ -31,12 +31,10 @@ class MainActivity : AppCompatActivity() {
                 val resBody = response.body()
                 if(resBody != null){
                     Log.d("retrofitResponse", "res: $resBody")
-                    Log.d("retrofitResponse", "name: ${resBody.name}")
-                    binding.tvName.text = resBody.name
+                    Log.d("retrofitResponse", "name: ${resBody.name} ${resBody.branch}")
+                    binding.tvName.text = "${resBody.name} ${resBody.branch}"
                     Log.d("retrofitResponse", "device: ${resBody.device}")
                     binding.tvDevice.text = "Device: ${resBody.device}"
-                    Log.d( "retrofitResponse", "branch: ${resBody.branch}" )
-                    binding.tvBranch.text = "Branch: ${resBody.branch}"
                     Log.d( "retrofitResponse", "Build Status: ${resBody.status}" )
                     binding.tvStatus.text = "Status: ${resBody.status}"
                 }
