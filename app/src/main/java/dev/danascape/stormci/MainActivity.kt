@@ -16,14 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        fetchUpdate()
 
         binding.btnRefresh.setOnClickListener {
-            finish()
-            overridePendingTransition(0, 0)
-            startActivity(getIntent())
-            overridePendingTransition(0, 0)
+            fetchUpdate()
         }
+    }
 
+    private fun fetchUpdate() {
         val retrofit = BuildInterface.create().getBuildInfo()
         retrofit.enqueue(object: Callback<BuildModel>{
             @SuppressLint("SetTextI18n")
