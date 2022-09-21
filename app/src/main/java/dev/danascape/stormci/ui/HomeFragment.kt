@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.danascape.stormci.BuildInterface
-import dev.danascape.stormci.BuildModel
 import dev.danascape.stormci.databinding.FragmentHomeBinding
+import dev.danascape.stormci.model.BuildModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,10 +21,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding
     get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +38,6 @@ class HomeFragment : Fragment() {
         }
         return binding.root
     }
-
 
     private fun fetchUpdate() {
         val retrofit = BuildInterface.create().getBuildInfo()

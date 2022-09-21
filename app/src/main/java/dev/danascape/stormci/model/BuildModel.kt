@@ -1,4 +1,4 @@
-package dev.danascape.stormci
+package dev.danascape.stormci.model
 
 import com.google.gson.annotations.SerializedName
 
