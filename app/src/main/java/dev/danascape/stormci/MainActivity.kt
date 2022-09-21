@@ -1,48 +1,39 @@
 package dev.danascape.stormci
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import dev.danascape.stormci.databinding.ActivityMainBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
-    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        fetchUpdate()
 
-        binding.btnRefresh.setOnClickListener {
-            fetchUpdate()
+        val homeFragment = HomeFragment()
+        val teamFragment = TeamFragment()
+        val devicesFragment = DevicesFragment()
+
+        setCurrentFragment(homeFragment)
+
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.miHome -> setCurrentFragment(homeFragment)
+                R.id.miTeam -> setCurrentFragment(teamFragment)
+                R.id.miDevices -> setCurrentFragment(devicesFragment)
+            }
+            true
         }
     }
 
-    private fun fetchUpdate() {
-        val retrofit = BuildInterface.create().getBuildInfo()
-        retrofit.enqueue(object: Callback<BuildModel>{
-            @SuppressLint("SetTextI18n")
-            override fun onResponse(call: Call<BuildModel>, response: Response<BuildModel>) {
-                val resBody = response.body()
-                if(resBody != null){
-                    Log.d("retrofitResponse", "res: $resBody")
-                    Log.d("retrofitResponse", "name: ${resBody.name} ${resBody.branch}")
-                    binding.tvName.text = "${resBody.name} ${resBody.branch}"
-                    Log.d("retrofitResponse", "device: ${resBody.device}")
-                    binding.tvDevice.text = "Device: ${resBody.device}"
-                    Log.d( "retrofitResponse", "Build Status: ${resBody.status}" )
-                    binding.tvStatus.text = "Status: ${resBody.status}"
-                }
-            }
-
-            override fun onFailure(call: Call<BuildModel>, t: Throwable) {
-                Log.e("retrofitResponse","Error: ${t.message}")
-            }
-        })
-    }
+    private fun setCurrentFragment(fragment: Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment)
+            commit()
+        }
 }
