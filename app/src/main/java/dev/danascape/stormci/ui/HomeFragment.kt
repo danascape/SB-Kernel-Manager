@@ -14,6 +14,9 @@ import dev.danascape.stormci.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
@@ -30,13 +33,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        val kernelVersion = readKernelVersion()
+        binding.tvKernel.text = kernelVersion
         fetchUpdate()
         binding.btnRefresh.setOnClickListener {
             fetchUpdate()
         }
         return binding.root
     }
-//    val kernelVersion = readKernelVersion()
+
 
     private fun fetchUpdate() {
         val retrofit = BuildInterface.create().getBuildInfo()
@@ -61,23 +67,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
     }
 
-//    private fun readKernelVersion(): String {
-//        try {
-//            val p = Runtime.getRuntime().exec("uname -av")
-//            val `is`: InputStream? = if (p.waitFor() == 0) {
-//                p.inputStream
-//            } else {
-//                p.errorStream
-//            }
-//            val br = BufferedReader(
-//                InputStreamReader(`is`),
-//                32
-//            )
-//            val line = br.readLine()
-//            br.close()
-//            return line
-//        } catch (ex: Exception) {
-//            return "ERROR: " + ex.message
-//        }
-//    }
+    private fun readKernelVersion(): String {
+        try {
+            val p = Runtime.getRuntime().exec("uname -av")
+            val `is`: InputStream? = if (p.waitFor() == 0) {
+                p.inputStream
+            } else {
+                p.errorStream
+            }
+            val br = BufferedReader(
+                InputStreamReader(`is`),
+                32
+            )
+            val line = br.readLine()
+            br.close()
+            return line
+        } catch (ex: Exception) {
+            return "ERROR: " + ex.message
+        }
+    }
 }
