@@ -3,39 +3,38 @@ package dev.danascape.stormci.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.danascape.stormci.BuildInterface
 import dev.danascape.stormci.BuildModel
 import dev.danascape.stormci.R
-import dev.danascape.stormci.databinding.ActivityMainBinding
-import org.w3c.dom.Text
+import dev.danascape.stormci.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding
+    get() = _binding!!
 
-    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
-        val btnRefresh = getView()?.findViewById<Button>(R.id.btnRefresh)
-//        val tvName = getView()?.findViewById<TextView>(R.id.tvName)
-//        val tvDevice = getView()?.findViewById<TextView>(R.id.tvDevice)
-//        val tvStatus = getView()?.findViewById<TextView>(R.id.tvStatus)
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         fetchUpdate()
-        if (btnRefresh != null) {
-            btnRefresh.setOnClickListener {
-                fetchUpdate()
-            }
+        binding.btnRefresh.setOnClickListener {
+            fetchUpdate()
         }
-
+        return binding.root
     }
 //    val kernelVersion = readKernelVersion()
 
@@ -44,18 +43,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         retrofit.enqueue(object: Callback<BuildModel> {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<BuildModel>, response: Response<BuildModel>) {
-                val tvName = getView()?.findViewById<TextView>(R.id.tvName)
-                val tvDevice = getView()?.findViewById<TextView>(R.id.tvDevice)
-                val tvStatus = getView()?.findViewById<TextView>(R.id.tvStatus)
                 val resBody = response.body()
                 if(resBody != null){
                     Log.d("retrofitResponse", "res: $resBody")
                     Log.d("retrofitResponse", "name: ${resBody.name} ${resBody.branch}")
-                    tvName?.text = "${resBody.name} ${resBody.branch}"
+                    binding.tvName.text = "${resBody.name} ${resBody.branch}"
                     Log.d("retrofitResponse", "device: ${resBody.device}")
-                    tvDevice?.text = "Device: ${resBody.device}"
+                    binding.tvDevice.text = "Device: ${resBody.device}"
                     Log.d( "retrofitResponse", "Build Status: ${resBody.status}" )
-                    tvStatus?.text = "Status: ${resBody.status}"
+                    binding.tvStatus.text = "Status: ${resBody.status}"
                 }
             }
 
