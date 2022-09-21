@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import dev.danascape.stormci.databinding.ActivityMainBinding
+import dev.danascape.stormci.ui.DevicesFragment
+import dev.danascape.stormci.ui.HomeFragment
+import dev.danascape.stormci.ui.TeamFragment
 
 
 class MainActivity : AppCompatActivity() {

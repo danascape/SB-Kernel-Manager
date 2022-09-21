@@ -1,4 +1,4 @@
-package dev.danascape.stormci
+package dev.danascape.stormci.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import dev.danascape.stormci.BuildInterface
+import dev.danascape.stormci.BuildModel
+import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.ActivityMainBinding
 import org.w3c.dom.Text
 import retrofit2.Call
