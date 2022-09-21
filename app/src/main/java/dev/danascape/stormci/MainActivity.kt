@@ -8,7 +8,6 @@ import dev.danascape.stormci.ui.DevicesFragment
 import dev.danascape.stormci.ui.HomeFragment
 import dev.danascape.stormci.ui.TeamFragment
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 

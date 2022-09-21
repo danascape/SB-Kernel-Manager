@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.danascape.stormci.BuildInterface
 import dev.danascape.stormci.BuildModel
-import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,7 +17,7 @@ import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding
     get() = _binding!!
@@ -36,6 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val kernelVersion = readKernelVersion()
         binding.tvKernel.text = kernelVersion
+
         fetchUpdate()
         binding.btnRefresh.setOnClickListener {
             fetchUpdate()

@@ -7,13 +7,13 @@
         android:icon="@drawable/ic_home"/>
 
     <item
-        android:id="@+id/miTeam"
-        android:title="Team"
-        android:icon="@drawable/ic_team"/>
-
-    <item
         android:id="@+id/miDevices"
         android:title="Devices"
         android:icon="@drawable/ic_devices"/>
+
+    <item
+        android:id="@+id/miTeam"
+        android:title="Team"
+        android:icon="@drawable/ic_team"/>
 
 </menu>
