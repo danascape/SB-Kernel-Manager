@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dev.danascape.stormci.BuildInterface
+import dev.danascape.stormci.api.APIClient
+import dev.danascape.stormci.api.DevicesService
+import dev.danascape.stormci.api.HomeService
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.model.BuildModel
 import retrofit2.Call
@@ -22,6 +24,8 @@ class HomeFragment : Fragment() {
     private val binding
     get() = _binding!!
 
+    private var mApiService: HomeService? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,16 +36,26 @@ class HomeFragment : Fragment() {
         val kernelVersion = readKernelVersion()
         binding.tvKernel.text = kernelVersion
 
+        val deviceName = readDeviceName()
+        binding.tvDeviceName.text = deviceName
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mApiService = APIClient.client.create(HomeService::class.java)
         fetchUpdate()
         binding.btnRefresh.setOnClickListener {
             fetchUpdate()
         }
-        return binding.root
     }
 
     private fun fetchUpdate() {
-        val retrofit = BuildInterface.create().getBuildInfo()
+        val retrofit = mApiService!!.getBuildInfo()
         retrofit.enqueue(object: Callback<BuildModel> {
+
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<BuildModel>, response: Response<BuildModel>) {
                 val resBody = response.body()
@@ -64,7 +78,27 @@ class HomeFragment : Fragment() {
 
     private fun readKernelVersion(): String {
         try {
-            val p = Runtime.getRuntime().exec("uname -av")
+            val p = Runtime.getRuntime().exec("uname -r")
+            val `is`: InputStream? = if (p.waitFor() == 0) {
+                p.inputStream
+            } else {
+                p.errorStream
+            }
+            val br = BufferedReader(
+                InputStreamReader(`is`),
+                32
+            )
+            val line = br.readLine()
+            br.close()
+            return line
+        } catch (ex: Exception) {
+            return "ERROR: " + ex.message
+        }
+    }
+
+    private fun readDeviceName(): String {
+        try {
+            val p = Runtime.getRuntime().exec("getprop ro.product.device")
             val `is`: InputStream? = if (p.waitFor() == 0) {
                 p.inputStream
             } else {

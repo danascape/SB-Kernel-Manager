@@ -1,5 +1,6 @@
 package dev.danascape.stormci.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -41,6 +42,7 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
         val call = mApiService!!.fetchDevices()
         call.enqueue(object : Callback<DevicesList> {
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<DevicesList>, response: Response<DevicesList>) {
                 Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.items!!.size)
                 val questions = response.body()
