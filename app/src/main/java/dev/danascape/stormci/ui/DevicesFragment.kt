@@ -49,9 +49,9 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
                 if (questions != null) {
                     mQuestions.addAll(questions.items!!)
                     mAdapter!!.notifyDataSetChanged()
+                    mQuestions=ArrayList<Devices>()
                 }
             }
-
             override fun onFailure(call: Call<DevicesList>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
