@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.WanderingCubes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:SpinKit_Color="@color/teal_200"
+         />
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
