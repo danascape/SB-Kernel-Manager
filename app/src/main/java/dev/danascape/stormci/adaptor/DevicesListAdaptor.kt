@@ -20,12 +20,12 @@ class DevicesListAdaptor(private val context: Context, private val mQuestions: M
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        holder.positionNumber.text = "Device Number : ${position + 1}"
+        holder.positionNumber.text = "Device: ${position + 1}"
         holder.title.text = mQuestions[position].name
-        holder.link.text = mQuestions[position].link
+        holder.link.text = "Maintainer: ${mQuestions[position].maintainer}"
 
         holder.containerView.setOnClickListener {
-            Toast.makeText(context, "Clicked on: " + holder.title.text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Link to download the kernel(placeholder)", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -36,6 +36,6 @@ class DevicesListAdaptor(private val context: Context, private val mQuestions: M
     class DeviceViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
         val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
         val title: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
-        val link: TextView = itemView.findViewById<View>(R.id.link) as TextView
+        val link: TextView = itemView.findViewById<View>(R.id.tvMaintainer) as TextView
     }
 }
