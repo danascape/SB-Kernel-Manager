@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.WanderingCubes
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adaptor.DevicesListAdaptor
+import dev.danascape.stormci.adaptor.device.DevicesListAdaptor
 import dev.danascape.stormci.api.APIClient
-import dev.danascape.stormci.api.DevicesService
-import dev.danascape.stormci.model.Devices
-import dev.danascape.stormci.model.DevicesList
+import dev.danascape.stormci.api.device.DevicesService
+import dev.danascape.stormci.model.device.Devices
+import dev.danascape.stormci.model.device.DevicesList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

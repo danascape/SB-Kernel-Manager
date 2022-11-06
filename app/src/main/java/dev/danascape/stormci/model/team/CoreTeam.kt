@@ -1,4 +1,4 @@
-package dev.danascape.stormci.model
+package dev.danascape.stormci.model.team
 
 class CoreTeam {
     val name: String? = null

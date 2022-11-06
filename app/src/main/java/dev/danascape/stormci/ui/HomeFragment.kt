@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.danascape.stormci.api.APIClient
-import dev.danascape.stormci.api.DevicesService
 import dev.danascape.stormci.api.HomeService
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.model.BuildModel

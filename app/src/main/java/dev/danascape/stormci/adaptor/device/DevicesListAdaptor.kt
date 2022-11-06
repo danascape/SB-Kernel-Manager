@@ -1,4 +1,4 @@
-package dev.danascape.stormci.adaptor
+package dev.danascape.stormci.adaptor.device
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.model.Devices
+import dev.danascape.stormci.model.device.Devices
 
 class DevicesListAdaptor(private val context: Context, private val mDevices: MutableList<Devices>, private val mRowLayout: Int) : RecyclerView.Adapter<DevicesListAdaptor.DeviceViewHolder>() {
 

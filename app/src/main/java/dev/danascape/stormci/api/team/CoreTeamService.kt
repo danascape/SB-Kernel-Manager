@@ -1,6 +1,6 @@
-package dev.danascape.stormci.api
+package dev.danascape.stormci.api.team
 
-import dev.danascape.stormci.model.CoreTeamList
+import dev.danascape.stormci.model.team.CoreTeamList
 import retrofit2.Call
 import retrofit2.http.GET
 

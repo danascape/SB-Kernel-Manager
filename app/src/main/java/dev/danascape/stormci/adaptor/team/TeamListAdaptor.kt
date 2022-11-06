@@ -1,4 +1,4 @@
-package dev.danascape.stormci.adaptor
+package dev.danascape.stormci.adaptor.team
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.model.CoreTeam
+import dev.danascape.stormci.model.team.CoreTeam
 
 class TeamListAdaptor(private val context: Context, private val mCoreTeam: MutableList<CoreTeam>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
 

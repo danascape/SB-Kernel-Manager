@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adaptor.TeamListAdaptor
+import dev.danascape.stormci.adaptor.team.TeamListAdaptor
 import dev.danascape.stormci.api.APIClient
-import dev.danascape.stormci.api.CoreTeamService
-import dev.danascape.stormci.model.CoreTeam
-import dev.danascape.stormci.model.CoreTeamList
+import dev.danascape.stormci.api.team.CoreTeamService
+import dev.danascape.stormci.model.team.CoreTeam
+import dev.danascape.stormci.model.team.CoreTeamList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

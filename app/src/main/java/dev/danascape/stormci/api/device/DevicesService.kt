@@ -1,6 +1,6 @@
-package dev.danascape.stormci.api
+package dev.danascape.stormci.api.device
 
-import dev.danascape.stormci.model.DevicesList
+import dev.danascape.stormci.model.device.DevicesList
 import retrofit2.Call
 import retrofit2.http.GET
 
