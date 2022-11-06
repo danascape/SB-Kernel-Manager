@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.FragmentHomeBinding
+import dev.danascape.stormci.ui.home.BuildHistoryFragment
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -30,6 +33,16 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnHistory.setOnClickListener {
+            val BuildHistoryFragment = BuildHistoryFragment()
+            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+            transaction.replace(R.id.flFragment, BuildHistoryFragment)
+            transaction.commit()
+        }
+    }
     private fun readKernelVersion(): String {
         try {
             val p = Runtime.getRuntime().exec("uname -r")
