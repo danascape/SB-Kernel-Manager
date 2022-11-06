@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.model.Devices
+import dev.danascape.stormci.model.CoreTeam
 
-class TeamListAdaptor(private val context: Context, private val mDevices: MutableList<Devices>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
+class TeamListAdaptor(private val context: Context, private val mCoreTeam: MutableList<CoreTeam>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)
@@ -20,22 +19,18 @@ class TeamListAdaptor(private val context: Context, private val mDevices: Mutabl
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
-        holder.positionNumber.text = "Device: ${position + 1}"
-        holder.title.text = mDevices[position].name
-        holder.link.text = "Maintainer: ${mDevices[position].maintainer}"
-
-        holder.containerView.setOnClickListener {
-            Toast.makeText(context, "Link to download the kernel", Toast.LENGTH_SHORT).show();
-        }
+        holder.positionNumber.text = "Member: ${position + 1}"
+        holder.name.text = mCoreTeam[position].name
+        holder.title.text = mCoreTeam[position].title
     }
 
     override fun getItemCount(): Int {
-        return mDevices.size
+        return mCoreTeam.size
     }
 
     class TeamViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
         val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
-        val title: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
-        val link: TextView = itemView.findViewById<View>(R.id.tvMaintainer) as TextView
+        val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
+        val title: TextView = itemView.findViewById<View>(R.id.tvTitle) as TextView
     }
 }
