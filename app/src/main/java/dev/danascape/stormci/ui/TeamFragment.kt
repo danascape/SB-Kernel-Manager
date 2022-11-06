@@ -6,8 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.CoreTeamListAdaptor
 import dev.danascape.stormci.adaptor.team.MaintainerListAdaptor
-import dev.danascape.stormci.api.GithubAPIClient
+import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.api.team.CoreTeamService
 import dev.danascape.stormci.api.team.MaintainerService
-import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.databinding.FragmentTeamBinding
 import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.CoreTeamList

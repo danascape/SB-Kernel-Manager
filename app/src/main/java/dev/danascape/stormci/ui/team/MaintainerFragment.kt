@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.MaintainerListAdaptor
-import dev.danascape.stormci.api.GithubAPIClient
+import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.api.team.MaintainerService
 import dev.danascape.stormci.model.team.Maintainer
 import dev.danascape.stormci.model.team.MaintainerList

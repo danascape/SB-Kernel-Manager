@@ -12,7 +12,7 @@ import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.WanderingCubes
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.device.DevicesListAdaptor
-import dev.danascape.stormci.api.GithubAPIClient
+import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.api.device.DevicesService
 import dev.danascape.stormci.model.device.Devices
 import dev.danascape.stormci.model.device.DevicesList

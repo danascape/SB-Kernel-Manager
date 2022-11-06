@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.CoreTeamListAdaptor
-import dev.danascape.stormci.api.GithubAPIClient
+import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.api.team.CoreTeamService
 import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.CoreTeamList
