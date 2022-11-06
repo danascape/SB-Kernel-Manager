@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.Maintainer
 
 class MaintainerListAdaptor(private val context: Context, private val mMaintainer: MutableList<Maintainer>, private val mRowLayout: Int) : RecyclerView.Adapter<MaintainerListAdaptor.MaintainerViewHolder>() {

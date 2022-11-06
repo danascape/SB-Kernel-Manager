@@ -23,6 +23,7 @@ import dev.danascape.stormci.databinding.FragmentTeamBinding
 import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.CoreTeamList
 import dev.danascape.stormci.model.team.Maintainer
+import dev.danascape.stormci.model.team.MaintainerList
 import dev.danascape.stormci.ui.team.CoreTeamFragment
 import dev.danascape.stormci.ui.team.MaintainerFragment
 import retrofit2.Call
@@ -111,20 +112,23 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     }
 
     private fun fetchMaintainerList() {
-        val call = mApiService!!.fetchCoreTeam()
+        val call = mApiMaintainerService!!.fetchMaintainer()
 
-        call.enqueue(object : Callback<CoreTeamList> {
+        call.enqueue(object : Callback<MaintainerList> {
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<CoreTeamList>, response: Response<CoreTeamList>) {
+            override fun onResponse(
+                call: Call<MaintainerList>,
+                response: Response<MaintainerList>
+            ) {
                 Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
-                    mCoreTeam.addAll(Response.members!!)
-                    mAdapter!!.notifyDataSetChanged()
-                    mCoreTeam=ArrayList<CoreTeam>()
+                    mMaintainer.addAll(Response.members!!)
+                    mMaintainerAdaptor!!.notifyDataSetChanged()
+                    mMaintainer = ArrayList<Maintainer>()
                 }
             }
-            override fun onFailure(call: Call<CoreTeamList>, t: Throwable) {
+            override fun onFailure(call: Call<MaintainerList>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
         })

@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface MaintainerService {
-    @GET("team/maintainer.json")
+    @GET("team/maintainers.json")
     fun fetchMaintainer(): Call<MaintainerList>
 }
