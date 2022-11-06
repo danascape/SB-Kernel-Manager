@@ -55,7 +55,6 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
             val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
             transaction.replace(R.id.flFragment, CoreTeamFragment)
             transaction.commit()
-            Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show()
         }
 
         val layoutManager = LinearLayoutManager(context)
