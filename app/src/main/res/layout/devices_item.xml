@@ -16,7 +16,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tvName"
             android:layout_width="267dp"
             android:layout_height="49dp"
             android:layout_alignParentEnd="true"
@@ -28,7 +28,7 @@
             android:id="@+id/link"
             android:layout_width="386dp"
             android:layout_height="75dp"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/tvName"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="16dp"

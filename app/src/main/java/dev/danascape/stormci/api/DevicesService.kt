@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface DevicesService {
-    @GET("test.json")
+    @GET("devices.json")
     fun fetchDevices(): Call<DevicesList>
 }

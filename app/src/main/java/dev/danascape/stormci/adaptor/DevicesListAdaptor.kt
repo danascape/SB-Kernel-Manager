@@ -21,7 +21,7 @@ class DevicesListAdaptor(private val context: Context, private val mQuestions: M
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         holder.positionNumber.text = "Device Number : ${position + 1}"
-        holder.title.text = mQuestions[position].title
+        holder.title.text = mQuestions[position].name
         holder.link.text = mQuestions[position].link
 
         holder.containerView.setOnClickListener {
@@ -35,7 +35,7 @@ class DevicesListAdaptor(private val context: Context, private val mQuestions: M
 
     class DeviceViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
         val positionNumber: TextView = itemView.findViewById<View>(R.id.positionNumber) as TextView
-        val title: TextView = itemView.findViewById<View>(R.id.title) as TextView
-        val link: TextView = itemView.findViewById<View>(R.id.title) as TextView
+        val title: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
+        val link: TextView = itemView.findViewById<View>(R.id.link) as TextView
     }
 }

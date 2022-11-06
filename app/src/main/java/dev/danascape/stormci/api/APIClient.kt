@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object APIClient {
-    private val BASE_URL = "https://abhiramshibu.tuxforums.com/~saalim/"
+    private val BASE_URL = "https://raw.githubusercontent.com/stormbreaker-project/official_devices/master/devices/"
     private var mRetrofit: Retrofit? = null
     val client: Retrofit
         get() {
