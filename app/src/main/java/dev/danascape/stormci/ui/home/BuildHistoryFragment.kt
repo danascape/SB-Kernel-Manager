@@ -50,11 +50,11 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
             ) {
                    Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.size)
                 val Response = response.body()
-//                if (Response != null) {
-//                    mBuildHistory.addAll(Response.status!!)
-//                    mAdapter!!.notifyDataSetChanged()
-//                    mBuildHistory = ArrayList<BuildHistoryList>()
-//                }
+                if (Response != null) {
+                    mBuildHistory.addAll(Response!!)
+                    mAdapter!!.notifyDataSetChanged()
+                    mBuildHistory = ArrayList<BuildHistoryList>()
+                }
             }
             override fun onFailure(call: Call<List<BuildHistoryList>>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
