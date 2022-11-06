@@ -58,10 +58,10 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<DevicesList>, response: Response<DevicesList>) {
                 progressBar?.visibility=View.GONE
-                Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.items!!.size)
+                Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.devices!!.size)
                 val questions = response.body()
                 if (questions != null) {
-                    mQuestions.addAll(questions.items!!)
+                    mQuestions.addAll(questions.devices!!)
                     mAdapter!!.notifyDataSetChanged()
                     mQuestions=ArrayList<Devices>()
                 }
