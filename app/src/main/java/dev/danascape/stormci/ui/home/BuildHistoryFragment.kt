@@ -11,7 +11,6 @@ import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.ci.BuildHistoryAdaptor
 import dev.danascape.stormci.api.AutomationService
 import dev.danascape.stormci.api.client.DroneClient
-import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.model.ci.BuildHistoryList
 import dev.danascape.stormci.model.ci.Params
 import retrofit2.Call
@@ -22,7 +21,6 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
 
     private var mApiService: AutomationService? = null
     private var mAdapter: BuildHistoryAdaptor?= null;
-    private var mBuildParams: MutableList<Params> = ArrayList()
     private var mBuildHistory: MutableList<BuildHistoryList> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView

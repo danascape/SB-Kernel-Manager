@@ -7,5 +7,12 @@ data class BuildHistoryList(
     val author_name: String,
     val started: Int,
     val finished: Int,
-//    val params: List<Params>
+    val params: Params?
+)
+
+data class Params(
+
+    val BRANCH: String?,
+
+    val DEVICE: String?
 )
