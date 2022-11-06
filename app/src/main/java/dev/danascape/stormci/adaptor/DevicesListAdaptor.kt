@@ -34,7 +34,7 @@ class DevicesListAdaptor(private val context: Context, private val mQuestions: M
     }
 
     class DeviceViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val positionNumber: TextView = itemView.findViewById<View>(R.id.positionNumber) as TextView
+        val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
         val title: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
         val link: TextView = itemView.findViewById<View>(R.id.link) as TextView
     }
