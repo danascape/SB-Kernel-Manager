@@ -35,7 +35,6 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     private var mCoreTeam: MutableList<CoreTeam> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var btnCoreTeam: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +51,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
 
         binding.btnCoreTeam.setOnClickListener {
             val CoreTeamFragment = CoreTeamFragment()
-            val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
             transaction.replace(R.id.flFragment, CoreTeamFragment)
             transaction.commit()
         }
