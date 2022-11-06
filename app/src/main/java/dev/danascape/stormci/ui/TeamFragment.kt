@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.CoreTeamListAdaptor
-import dev.danascape.stormci.api.APIClient
+import dev.danascape.stormci.api.GithubAPIClient
 import dev.danascape.stormci.api.team.CoreTeamService
 import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.CoreTeamList
@@ -34,7 +34,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         mAdapter = activity?.let { CoreTeamListAdaptor(it, mCoreTeam, R.layout.core_team_item) }
         recyclerView.adapter = mAdapter
 
-        mApiService = APIClient.client.create(CoreTeamService::class.java)
+        mApiService = GithubAPIClient.client.create(CoreTeamService::class.java)
         fetchCoreTeamList()
     }
 

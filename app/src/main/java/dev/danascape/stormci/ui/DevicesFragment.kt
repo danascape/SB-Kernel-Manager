@@ -12,7 +12,7 @@ import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.WanderingCubes
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.device.DevicesListAdaptor
-import dev.danascape.stormci.api.APIClient
+import dev.danascape.stormci.api.GithubAPIClient
 import dev.danascape.stormci.api.device.DevicesService
 import dev.danascape.stormci.model.device.Devices
 import dev.danascape.stormci.model.device.DevicesList
@@ -40,7 +40,7 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
         mAdapter = activity?.let { DevicesListAdaptor(it, mDevices, R.layout.devices_item) }
         recyclerView.adapter = mAdapter
 
-        mApiService = APIClient.client.create(DevicesService::class.java)
+        mApiService = GithubAPIClient.client.create(DevicesService::class.java)
         progressBar?.setIndeterminateDrawable(doubleBounce)
         progressBar?.visibility=View.VISIBLE
         fetchDevicesList()

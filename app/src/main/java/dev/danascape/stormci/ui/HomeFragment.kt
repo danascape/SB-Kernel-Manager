@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dev.danascape.stormci.api.APIClient
+import dev.danascape.stormci.api.GithubAPIClient
 import dev.danascape.stormci.api.HomeService
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.model.BuildModel
@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mApiService = APIClient.client.create(HomeService::class.java)
+        mApiService = GithubAPIClient.client.create(HomeService::class.java)
         fetchUpdate()
         binding.btnRefresh.setOnClickListener {
             fetchUpdate()
