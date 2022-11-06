@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
@@ -19,6 +20,7 @@ import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.databinding.FragmentTeamBinding
 import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.CoreTeamList
+import dev.danascape.stormci.ui.team.CoreTeamFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,6 +51,10 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCoreTeam.setOnClickListener {
+            val CoreTeamFragment = CoreTeamFragment()
+            val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+            transaction.replace(R.id.flFragment, CoreTeamFragment)
+            transaction.commit()
             Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show()
         }
 
