@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.model.Devices
 
-class DevicesListAdaptor(private val context: Context, private val mQuestions: MutableList<Devices>, private val mRowLayout: Int) : RecyclerView.Adapter<DevicesListAdaptor.DeviceViewHolder>() {
+class DevicesListAdaptor(private val context: Context, private val mDevices: MutableList<Devices>, private val mRowLayout: Int) : RecyclerView.Adapter<DevicesListAdaptor.DeviceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)
@@ -21,16 +21,16 @@ class DevicesListAdaptor(private val context: Context, private val mQuestions: M
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         holder.positionNumber.text = "Device: ${position + 1}"
-        holder.title.text = mQuestions[position].name
-        holder.link.text = "Maintainer: ${mQuestions[position].maintainer}"
+        holder.title.text = mDevices[position].name
+        holder.link.text = "Maintainer: ${mDevices[position].maintainer}"
 
         holder.containerView.setOnClickListener {
-            Toast.makeText(context, "Link to download the kernel(placeholder)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Link to download the kernel", Toast.LENGTH_SHORT).show();
         }
     }
 
     override fun getItemCount(): Int {
-        return mQuestions.size
+        return mDevices.size
     }
 
     class DeviceViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {

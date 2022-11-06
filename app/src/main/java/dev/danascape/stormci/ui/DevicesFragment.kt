@@ -1,7 +1,6 @@
 package dev.danascape.stormci.ui
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,10 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.ybq.android.spinkit.sprite.Sprite
-import com.github.ybq.android.spinkit.style.FoldingCube
 import com.github.ybq.android.spinkit.style.WanderingCubes
-import com.github.ybq.android.spinkit.style.Wave
-import com.google.android.material.progressindicator.CircularProgressIndicator
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.DevicesListAdaptor
 import dev.danascape.stormci.api.APIClient
@@ -28,7 +24,7 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
 
     private var mApiService: DevicesService? = null
     private var mAdapter: DevicesListAdaptor?= null;
-    private var mQuestions: MutableList<Devices> = ArrayList()
+    private var mDevices: MutableList<Devices> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
 
@@ -41,7 +37,7 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
         recyclerView = requireView().findViewById(R.id.listRecyclerView)
 	    progressBar = requireView().findViewById(R.id.spin_kit)
         recyclerView.layoutManager = layoutManager
-        mAdapter = activity?.let { DevicesListAdaptor(it, mQuestions, R.layout.devices_item) }
+        mAdapter = activity?.let { DevicesListAdaptor(it, mDevices, R.layout.devices_item) }
         recyclerView.adapter = mAdapter
 
         mApiService = APIClient.client.create(DevicesService::class.java)
@@ -59,11 +55,11 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
             override fun onResponse(call: Call<DevicesList>, response: Response<DevicesList>) {
                 progressBar?.visibility=View.GONE
                 Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.devices!!.size)
-                val questions = response.body()
-                if (questions != null) {
-                    mQuestions.addAll(questions.devices!!)
+                val Response = response.body()
+                if (Response != null) {
+                    mDevices.addAll(Response.devices!!)
                     mAdapter!!.notifyDataSetChanged()
-                    mQuestions=ArrayList<Devices>()
+                    mDevices=ArrayList<Devices>()
                 }
             }
             override fun onFailure(call: Call<DevicesList>, t: Throwable) {
