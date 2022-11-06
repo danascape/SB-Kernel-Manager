@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adaptor.team.TeamListAdaptor
+import dev.danascape.stormci.adaptor.team.CoreTeamListAdaptor
 import dev.danascape.stormci.api.APIClient
 import dev.danascape.stormci.api.team.CoreTeamService
 import dev.danascape.stormci.model.team.CoreTeam
@@ -20,7 +20,7 @@ import retrofit2.Response
 class TeamFragment : Fragment(R.layout.fragment_team) {
 
     private var mApiService: CoreTeamService? = null
-    private var mAdapter: TeamListAdaptor?= null;
+    private var mAdapter: CoreTeamListAdaptor?= null;
     private var mCoreTeam: MutableList<CoreTeam> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
@@ -31,7 +31,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         val layoutManager = LinearLayoutManager(context)
         recyclerView = requireView().findViewById(R.id.rvCoreTeam)
         recyclerView.layoutManager = layoutManager
-        mAdapter = activity?.let { TeamListAdaptor(it, mCoreTeam, R.layout.core_team_item) }
+        mAdapter = activity?.let { CoreTeamListAdaptor(it, mCoreTeam, R.layout.core_team_item) }
         recyclerView.adapter = mAdapter
 
         mApiService = APIClient.client.create(CoreTeamService::class.java)

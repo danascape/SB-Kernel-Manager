@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.model.team.CoreTeam
 
-class TeamListAdaptor(private val context: Context, private val mCoreTeam: MutableList<CoreTeam>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
+class CoreTeamListAdaptor(private val context: Context, private val mCoreTeam: MutableList<CoreTeam>, private val mRowLayout: Int) : RecyclerView.Adapter<CoreTeamListAdaptor.TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)
