@@ -31,12 +31,19 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="120dp">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View all"
+            android:id="@+id/btnCoreTeam"
+            android:layout_marginLeft="300dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:text="Core Members"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"/>
+            android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCoreTeam"

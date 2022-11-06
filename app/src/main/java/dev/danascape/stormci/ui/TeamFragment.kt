@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +26,14 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     private var mCoreTeam: MutableList<CoreTeam> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var btnCoreTeam: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btnCoreTeam.setOnClickListener {
+            Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show()
+        }
 
         val layoutManager = LinearLayoutManager(context)
         recyclerView = requireView().findViewById(R.id.rvCoreTeam)
