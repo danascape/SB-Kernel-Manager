@@ -82,13 +82,14 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         mApiService = GithubAPIClient.client.create(CoreTeamService::class.java)
         fetchCoreTeamList()
 
-//        MaintainerView = requireView().findViewById(R.id.rvMaintainer)
+        MaintainerView = requireView().findViewById(R.id.rvMaintainer)
 //        MaintainerView.layoutManager = layoutManager
-//        mMaintainerAdaptor = activity?.let { MaintainerListAdaptor(it,mMaintainer, R.layout.core_team_item) }
-//        MaintainerView.adapter = mMaintainerAdaptor
-//
-//        mApiMaintainerService = GithubAPIClient.client.create(MaintainerService::class.java)
-//        fetchMaintainerList()
+        MaintainerView.setLayoutManager(LinearLayoutManager(getActivity()))
+        mMaintainerAdaptor = activity?.let { MaintainerListAdaptor(it,mMaintainer, R.layout.core_team_item) }
+        MaintainerView.adapter = mMaintainerAdaptor
+
+        mApiMaintainerService = GithubAPIClient.client.create(MaintainerService::class.java)
+        fetchMaintainerList()
     }
 
     private fun fetchCoreTeamList() {
