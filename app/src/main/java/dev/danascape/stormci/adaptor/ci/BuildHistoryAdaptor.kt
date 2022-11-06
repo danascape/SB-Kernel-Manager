@@ -23,12 +23,12 @@ class BuildHistoryAdaptor(private val context: Context, private val mBuildHistor
         holder.name.text = mBuildHistory[position].status
     }
 
-    override fun getItemCount(): Int {
-        return mBuildHistory.size
-    }
-
     class BuildHistoryHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
         val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
         val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
+    }
+
+    override fun getItemCount(): Int {
+        TODO("Not yet implemented")
     }
 }

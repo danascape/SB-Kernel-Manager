@@ -41,20 +41,17 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         val call = mApiService!!.fetchBuildHistory()
 
         call.enqueue(object : Callback<List<BuildHistoryList>> {
-
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<List<BuildHistoryList>>, response: Response<List<BuildHistoryList>>) {
-                   Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.status!!.size)
-                val Response = response.body()
-                if (Response != null) {
-                    mBuildHistory.addAll(Response.id!!)
-                    mAdapter!!.notifyDataSetChanged()
-                    mBuildHistory = ArrayList<BuildHistoryList>()
-                }
+            override fun onResponse(
+                call: Call<List<BuildHistoryList>>,
+                response: Response<List<BuildHistoryList>>
+            ) {
+                Log.d("StormCI", "Total builds: " + response.body()!!.size)
             }
+
             override fun onFailure(call: Call<List<BuildHistoryList>>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
+
         })
     }
 
