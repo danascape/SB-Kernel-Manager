@@ -3,7 +3,9 @@ package dev.danascape.stormci.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -13,6 +15,8 @@ import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.CoreTeamListAdaptor
 import dev.danascape.stormci.api.GithubAPIClient
 import dev.danascape.stormci.api.team.CoreTeamService
+import dev.danascape.stormci.databinding.FragmentHomeBinding
+import dev.danascape.stormci.databinding.FragmentTeamBinding
 import dev.danascape.stormci.model.team.CoreTeam
 import dev.danascape.stormci.model.team.CoreTeamList
 import retrofit2.Call
@@ -20,6 +24,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class TeamFragment : Fragment(R.layout.fragment_team) {
+    private var _binding: FragmentTeamBinding? = null
+    private val binding
+    get() = _binding!!
 
     private var mApiService: CoreTeamService? = null
     private var mAdapter: CoreTeamListAdaptor?= null;
@@ -28,10 +35,20 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnCoreTeam: Button
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentTeamBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnCoreTeam.setOnClickListener {
+        binding.btnCoreTeam.setOnClickListener {
             Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show()
         }
 
