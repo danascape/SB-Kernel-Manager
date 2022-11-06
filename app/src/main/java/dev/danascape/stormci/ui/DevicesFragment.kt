@@ -34,7 +34,7 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
         super.onViewCreated(view, savedInstanceState)
 
         val layoutManager = LinearLayoutManager(context)
-        recyclerView = requireView().findViewById(R.id.listRecyclerView)
+        recyclerView = requireView().findViewById(R.id.rvDevices)
 	    progressBar = requireView().findViewById(R.id.spin_kit)
         recyclerView.layoutManager = layoutManager
         mAdapter = activity?.let { DevicesListAdaptor(it, mDevices, R.layout.devices_item) }
