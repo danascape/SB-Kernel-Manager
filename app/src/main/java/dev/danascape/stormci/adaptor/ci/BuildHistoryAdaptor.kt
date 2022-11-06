@@ -19,8 +19,12 @@ class BuildHistoryAdaptor(private val context: Context, private val mBuildHistor
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BuildHistoryHolder, position: Int) {
-        holder.positionNumber.text = "Member: ${position + 1}"
-        holder.name.text = mBuildHistory[position].status
+        holder.buildNumber.text = "${position + 1}"
+//        holder.name.text = "Name: ${mBuildHistory[position].params.DEVICE}"
+//        holder.branch.text = "Name: ${mBuildHistory[position].params.BRANCH}"
+        holder.author.text = "Triggered by ${mBuildHistory[position].author_name}"
+        holder.buildTime.text = "Build took: ${mBuildHistory[position].finished - mBuildHistory[position].started} seconds"
+        holder.status.text = "Status: ${mBuildHistory[position].status}"
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +32,11 @@ class BuildHistoryAdaptor(private val context: Context, private val mBuildHistor
     }
 
     class BuildHistoryHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
-        val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
+        val buildNumber: TextView = itemView.findViewById<View>(R.id.tvbuildNumber) as TextView
+//        val name: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
+//        val branch: TextView = itemView.findViewById<View>(R.id.tvBranch) as TextView
+        val author: TextView = itemView.findViewById<View>(R.id.tvAuthor) as TextView
+        val buildTime: TextView = itemView.findViewById<View>(R.id.tvBuildTime) as TextView
+        val status: TextView = itemView.findViewById<View>(R.id.tvStatus) as TextView
     }
 }

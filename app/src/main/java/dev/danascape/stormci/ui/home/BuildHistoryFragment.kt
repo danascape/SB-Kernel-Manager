@@ -31,7 +31,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         val layoutManager = LinearLayoutManager(context)
         recyclerView = requireView().findViewById(R.id.rvDevices)
         recyclerView.layoutManager = layoutManager
-        mAdapter = activity?.let { BuildHistoryAdaptor(it, mBuildHistory, R.layout.devices_item) }
+        mAdapter = activity?.let { BuildHistoryAdaptor(it, mBuildHistory, R.layout.build_history_item) }
         recyclerView.adapter = mAdapter
 
         mApiService = DroneClient.client.create(AutomationService::class.java)
