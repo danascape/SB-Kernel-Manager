@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.ci.BuildHistoryAdaptor
 import dev.danascape.stormci.api.AutomationService
+import dev.danascape.stormci.api.client.DroneClient
 import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.model.ci.BuildHistoryList
 import retrofit2.Call
@@ -33,7 +34,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         mAdapter = activity?.let { BuildHistoryAdaptor(it, mBuildHistory, R.layout.devices_item) }
         recyclerView.adapter = mAdapter
 
-        mApiService = GithubAPIClient.client.create(AutomationService::class.java)
+        mApiService = DroneClient.client.create(AutomationService::class.java)
         fetchDevicesList()
     }
 
@@ -41,17 +42,23 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         val call = mApiService!!.fetchBuildHistory()
 
         call.enqueue(object : Callback<List<BuildHistoryList>> {
+
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
                 call: Call<List<BuildHistoryList>>,
                 response: Response<List<BuildHistoryList>>
             ) {
-                Log.d("StormCI", "Total builds: " + response.body()!!.size)
+                   Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.size)
+                val Response = response.body()
+//                if (Response != null) {
+//                    mBuildHistory.addAll(Response.status!!)
+//                    mAdapter!!.notifyDataSetChanged()
+//                    mBuildHistory = ArrayList<BuildHistoryList>()
+//                }
             }
-
             override fun onFailure(call: Call<List<BuildHistoryList>>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
-
         })
     }
 
