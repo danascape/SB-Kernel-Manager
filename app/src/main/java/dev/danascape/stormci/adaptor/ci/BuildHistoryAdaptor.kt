@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.model.ci.BuildHistoryList
+import dev.danascape.stormci.model.ci.Params
 
 class BuildHistoryAdaptor(private val context: Context, private val mBuildHistory: MutableList<BuildHistoryList>, private val mRowLayout: Int) : RecyclerView.Adapter<BuildHistoryAdaptor.BuildHistoryHolder>() {
 
@@ -20,8 +21,8 @@ class BuildHistoryAdaptor(private val context: Context, private val mBuildHistor
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: BuildHistoryHolder, position: Int) {
         holder.buildNumber.text = "${position + 1}"
-//        holder.name.text = "Name: ${mBuildHistory[position].params.DEVICE}"
-//        holder.branch.text = "Name: ${mBuildHistory[position].params.BRANCH}"
+//        holder.name.text = "Name: ${mBuildHistory[position].DEVICE}"
+//        holder.branch.text = "Name: ${mBuildParams[position].BRANCH}"
         holder.author.text = "Triggered by ${mBuildHistory[position].author_name}"
         holder.buildTime.text = "Build took: ${mBuildHistory[position].finished - mBuildHistory[position].started} seconds"
         holder.status.text = "Status: ${mBuildHistory[position].status}"

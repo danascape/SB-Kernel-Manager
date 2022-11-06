@@ -13,6 +13,7 @@ import dev.danascape.stormci.api.AutomationService
 import dev.danascape.stormci.api.client.DroneClient
 import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.model.ci.BuildHistoryList
+import dev.danascape.stormci.model.ci.Params
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +22,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
 
     private var mApiService: AutomationService? = null
     private var mAdapter: BuildHistoryAdaptor?= null;
+    private var mBuildParams: MutableList<Params> = ArrayList()
     private var mBuildHistory: MutableList<BuildHistoryList> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
@@ -48,10 +50,10 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
                 call: Call<List<BuildHistoryList>>,
                 response: Response<List<BuildHistoryList>>
             ) {
-                   Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.size)
+                Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.size)
                 val Response = response.body()
                 if (Response != null) {
-                    mBuildHistory.addAll(Response!!)
+                    mBuildHistory.addAll(Response)
                     mAdapter!!.notifyDataSetChanged()
                     mBuildHistory = ArrayList<BuildHistoryList>()
                 }

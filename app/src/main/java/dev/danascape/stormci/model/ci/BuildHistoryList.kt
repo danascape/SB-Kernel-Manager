@@ -6,5 +6,6 @@ data class BuildHistoryList(
     val status: String,
     val author_name: String,
     val started: Int,
-    val finished: Int
+    val finished: Int,
+//    val params: List<Params>
 )
