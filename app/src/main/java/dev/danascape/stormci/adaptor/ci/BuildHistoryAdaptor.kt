@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.model.ci.BuildHistory
+import dev.danascape.stormci.model.ci.BuildHistoryList
 
-class BuildHistoryAdaptor(private val context: Context, private val mBuildHistory: MutableList<BuildHistory>, private val mRowLayout: Int) : RecyclerView.Adapter<BuildHistoryAdaptor.BuildHistoryHolder>() {
+class BuildHistoryAdaptor(private val context: Context, private val mBuildHistory: MutableList<BuildHistoryList>, private val mRowLayout: Int) : RecyclerView.Adapter<BuildHistoryAdaptor.BuildHistoryHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildHistoryHolder {
         val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)

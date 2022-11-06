@@ -4,21 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.ci.BuildHistoryAdaptor
-import dev.danascape.stormci.adaptor.device.DevicesListAdaptor
 import dev.danascape.stormci.api.AutomationService
 import dev.danascape.stormci.api.client.GithubAPIClient
-import dev.danascape.stormci.api.device.DevicesService
-import dev.danascape.stormci.model.ci.BuildHistory
 import dev.danascape.stormci.model.ci.BuildHistoryList
-import dev.danascape.stormci.model.device.Devices
-import dev.danascape.stormci.model.device.DevicesList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +20,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
 
     private var mApiService: AutomationService? = null
     private var mAdapter: BuildHistoryAdaptor?= null;
-    private var mBuildHistory: MutableList<BuildHistory> = ArrayList()
+    private var mBuildHistory: MutableList<BuildHistoryList> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
 
@@ -47,19 +40,19 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
     private fun fetchDevicesList() {
         val call = mApiService!!.fetchBuildHistory()
 
-        call.enqueue(object : Callback<BuildHistoryList> {
+        call.enqueue(object : Callback<List<BuildHistoryList>> {
 
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<BuildHistoryList>, response: Response<BuildHistoryList>) {
-                   Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.list!!.size)
+            override fun onResponse(call: Call<List<BuildHistoryList>>, response: Response<List<BuildHistoryList>>) {
+                   Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.status!!.size)
                 val Response = response.body()
                 if (Response != null) {
-                    mBuildHistory.addAll(Response.list!!)
+                    mBuildHistory.addAll(Response.id!!)
                     mAdapter!!.notifyDataSetChanged()
-                    mBuildHistory = ArrayList<BuildHistory>()
+                    mBuildHistory = ArrayList<BuildHistoryList>()
                 }
             }
-            override fun onFailure(call: Call<BuildHistoryList>, t: Throwable) {
+            override fun onFailure(call: Call<List<BuildHistoryList>>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
         })

@@ -1,5 +1,6 @@
 package dev.danascape.stormci.model.ci
 
 class BuildHistoryList {
-    val list: List<BuildHistory>? = null
+    val id: Int? = null
+    val status: String? = null
 }
