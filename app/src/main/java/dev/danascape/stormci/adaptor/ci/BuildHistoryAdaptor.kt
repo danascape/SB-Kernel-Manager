@@ -23,7 +23,7 @@ class BuildHistoryAdaptor(private val context: Context, private val mBuildHistor
         holder.buildNumber.text = "${position + 1}"
         holder.name.text = "Name: ${mBuildHistory[position].params!!.device!!}"
         holder.branch.text = "Branch: ${mBuildHistory[position].params!!.branch!!}"
-        holder.author.text = "Triggered by ${mBuildHistory[position].author_name}"
+        holder.author.text = "Triggered by ${mBuildHistory[position]!!.author_name}"
         holder.buildTime.text = "Build took: ${mBuildHistory[position].finished - mBuildHistory[position].started} seconds"
         holder.status.text = "Status: ${mBuildHistory[position].status}"
     }
@@ -34,8 +34,8 @@ class BuildHistoryAdaptor(private val context: Context, private val mBuildHistor
 
     class BuildHistoryHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
         val buildNumber: TextView = itemView.findViewById<View>(R.id.tvbuildNumber) as TextView
-        val name: TextView = itemView?.findViewById<View>(R.id.tvName) as TextView
-        val branch: TextView = itemView?.findViewById<View>(R.id.tvBranch) as TextView
+        val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
+        val branch: TextView = itemView.findViewById<View>(R.id.tvBranch) as TextView
         val author: TextView = itemView.findViewById<View>(R.id.tvAuthor) as TextView
         val buildTime: TextView = itemView.findViewById<View>(R.id.tvBuildTime) as TextView
         val status: TextView = itemView.findViewById<View>(R.id.tvStatus) as TextView
