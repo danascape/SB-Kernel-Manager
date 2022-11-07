@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import dev.danascape.stormci.R
 import dev.danascape.stormci.model.team.CoreTeam
 
-class CoreTeamListFragmentAdaptor(private val context: Context, private val mCoreTeam: MutableList<CoreTeam>, private val mRowLayout: Int) : RecyclerView.Adapter<CoreTeamListFragmentAdaptor.TeamViewHolder>() {
+class TeamListFragmentAdaptor(private val context: Context, private val mCoreTeam: MutableList<CoreTeam>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListFragmentAdaptor.TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)

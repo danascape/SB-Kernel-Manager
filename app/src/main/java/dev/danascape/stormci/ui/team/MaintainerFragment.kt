@@ -8,21 +8,20 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adaptor.team.MaintainerListAdaptor
-import dev.danascape.stormci.adaptor.team.fragment.MaintainerListFragmentAdaptor
+import dev.danascape.stormci.adaptor.team.fragment.TeamListFragmentAdaptor
 import dev.danascape.stormci.api.client.GithubAPIClient
-import dev.danascape.stormci.api.team.MaintainerService
-import dev.danascape.stormci.model.team.Maintainer
-import dev.danascape.stormci.model.team.MaintainerList
+import dev.danascape.stormci.api.team.CoreTeamService
+import dev.danascape.stormci.model.team.CoreTeam
+import dev.danascape.stormci.model.team.CoreTeamList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
 
-    private var mApiMaintainerService: MaintainerService? = null
-    private var mMaintainerAdaptor: MaintainerListFragmentAdaptor? = null
-    private var mMaintainer: MutableList<Maintainer> = ArrayList()
+    private var mApiService: CoreTeamService? = null
+    private var mAdapter: TeamListFragmentAdaptor?= null;
+    private var mCoreTeam: MutableList<CoreTeam> = ArrayList()
 
     private lateinit var MaintainerView: RecyclerView
 
@@ -32,31 +31,28 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
         val gridManager = GridLayoutManager(context, 2)
         MaintainerView = requireView().findViewById(R.id.rvMaintainer)
         MaintainerView.layoutManager = gridManager
-        mMaintainerAdaptor = activity?.let { MaintainerListFragmentAdaptor(it,mMaintainer, R.layout.fragment_core_team_item) }
-        MaintainerView.adapter = mMaintainerAdaptor
+        mAdapter = activity?.let { TeamListFragmentAdaptor(it, mCoreTeam, R.layout.fragment_team_item) }
+        MaintainerView.adapter = mAdapter
 
-        mApiMaintainerService = GithubAPIClient.client.create(MaintainerService::class.java)
-        fetchMaintainerList()
+        mApiService = GithubAPIClient.client.create(CoreTeamService::class.java)
+        fetchCoreTeamList()
     }
 
-    private fun fetchMaintainerList() {
-        val call = mApiMaintainerService!!.fetchMaintainer()
+    private fun fetchCoreTeamList() {
+        val call = mApiService!!.fetchMaintainer()
 
-        call.enqueue(object : Callback<MaintainerList> {
+        call.enqueue(object : Callback<CoreTeamList> {
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(
-                call: Call<MaintainerList>,
-                response: Response<MaintainerList>
-            ) {
+            override fun onResponse(call: Call<CoreTeamList>, response: Response<CoreTeamList>) {
                 Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
-                    mMaintainer.addAll(Response.members!!)
-                    mMaintainerAdaptor!!.notifyDataSetChanged()
-                    mMaintainer = ArrayList<Maintainer>()
+                    mCoreTeam.addAll(Response.members!!)
+                    mAdapter!!.notifyDataSetChanged()
+                    mCoreTeam=ArrayList<CoreTeam>()
                 }
             }
-            override fun onFailure(call: Call<MaintainerList>, t: Throwable) {
+            override fun onFailure(call: Call<CoreTeamList>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
         })
