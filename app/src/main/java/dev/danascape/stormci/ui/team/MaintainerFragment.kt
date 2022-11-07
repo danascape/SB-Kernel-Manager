@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.MaintainerListAdaptor

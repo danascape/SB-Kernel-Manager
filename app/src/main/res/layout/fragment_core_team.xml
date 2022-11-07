@@ -26,6 +26,6 @@
         android:layout_marginEnd="138dp"
         android:layout_marginTop="17dp"
         android:layout_marginLeft="18dp"
-        android:text="Core Team"
+        android:text="Key Members"
         android:textSize="26sp" />
 </RelativeLayout>
