@@ -1,5 +1,8 @@
 package dev.danascape.stormci
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         val homeFragment = HomeFragment()
         val teamFragment = TeamFragment()
         val devicesFragment = DevicesFragment()
-
         setCurrentFragment(homeFragment)
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -31,6 +33,24 @@ class MainActivity : AppCompatActivity() {
                 R.id.miDevices -> setCurrentFragment(devicesFragment)
             }
             true
+        }
+    }
+
+    private fun isOnline(context: Context?): Boolean {
+
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val network = connectivityManager.activeNetwork ?: return false
+
+        val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+        return when {
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+
+            // else return false
+            else -> false
         }
     }
 
