@@ -1,5 +1,7 @@
 package dev.danascape.stormci.model.ci
 
+import com.google.gson.annotations.SerializedName
+
 data class BuildHistoryList(
     val id: Int,
     val number: Int,
@@ -11,8 +13,9 @@ data class BuildHistoryList(
 )
 
 data class Params(
+    @SerializedName("DEVICE")
+    val device: String?,
 
-    val BRANCH: String?,
-
-    val DEVICE: String?
+    @SerializedName("BRANCH")
+    val branch: String?
 )
