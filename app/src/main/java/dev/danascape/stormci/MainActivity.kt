@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import dev.danascape.stormci.databinding.ActivityMainBinding
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        if(!isOnline(this)) {
+            Toast.makeText(this, "No internet Connection", Toast.LENGTH_SHORT).show()
+            finish()
+        }
         val homeFragment = HomeFragment()
         val teamFragment = TeamFragment()
         val devicesFragment = DevicesFragment()
