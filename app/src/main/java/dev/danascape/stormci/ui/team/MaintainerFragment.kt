@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.MaintainerListAdaptor
+import dev.danascape.stormci.adaptor.team.fragment.MaintainerListFragmentAdaptor
 import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.api.team.MaintainerService
 import dev.danascape.stormci.model.team.Maintainer
@@ -20,7 +21,7 @@ import retrofit2.Response
 class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
 
     private var mApiMaintainerService: MaintainerService? = null
-    private var mMaintainerAdaptor: MaintainerListAdaptor? = null
+    private var mMaintainerAdaptor: MaintainerListFragmentAdaptor? = null
     private var mMaintainer: MutableList<Maintainer> = ArrayList()
 
     private lateinit var MaintainerView: RecyclerView
@@ -31,7 +32,7 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
         val gridManager = GridLayoutManager(context, 2)
         MaintainerView = requireView().findViewById(R.id.rvMaintainer)
         MaintainerView.layoutManager = gridManager
-        mMaintainerAdaptor = activity?.let { MaintainerListAdaptor(it,mMaintainer, R.layout.core_team_item) }
+        mMaintainerAdaptor = activity?.let { MaintainerListFragmentAdaptor(it,mMaintainer, R.layout.fragment_core_team_item) }
         MaintainerView.adapter = mMaintainerAdaptor
 
         mApiMaintainerService = GithubAPIClient.client.create(MaintainerService::class.java)

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adaptor.team.CoreTeamListAdaptor
+import dev.danascape.stormci.adaptor.team.fragment.CoreTeamListFragmentAdaptor
 import dev.danascape.stormci.api.client.GithubAPIClient
 import dev.danascape.stormci.api.team.CoreTeamService
 import dev.danascape.stormci.model.team.CoreTeam
@@ -20,7 +20,7 @@ import retrofit2.Response
 class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
 
     private var mApiService: CoreTeamService? = null
-    private var mAdapter: CoreTeamListAdaptor?= null;
+    private var mAdapter: CoreTeamListFragmentAdaptor?= null;
     private var mCoreTeam: MutableList<CoreTeam> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
@@ -31,7 +31,7 @@ class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
         val gridManager = GridLayoutManager(context, 2)
         recyclerView = requireView().findViewById(R.id.rvCoreTeam)
         recyclerView.layoutManager = gridManager
-        mAdapter = activity?.let { CoreTeamListAdaptor(it, mCoreTeam, R.layout.fragment_core_team_item) }
+        mAdapter = activity?.let { CoreTeamListFragmentAdaptor(it, mCoreTeam, R.layout.fragment_core_team_item) }
         recyclerView.adapter = mAdapter
 
         mApiService = GithubAPIClient.client.create(CoreTeamService::class.java)
