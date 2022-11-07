@@ -31,8 +31,10 @@ class CoreTeamListFragmentAdaptor(private val context: Context, private val mCor
         }
         holder.name.text = mCoreTeam[position].name
         holder.title.text = mCoreTeam[position].title
-        holder.github.text = mCoreTeam[position].github
-        holder.linkedin.text = mCoreTeam[position].linkedin
+        holder.github.text = "Github"
+        holder.linkedin.text = "Linkedin"
+//        holder.github.text = mCoreTeam[position].github
+//        holder.linkedin.text = mCoreTeam[position].linkedin
 
         holder.github.setOnClickListener {
             Toast.makeText(context, "Clicked on Github Profile Link", Toast.LENGTH_SHORT).show()

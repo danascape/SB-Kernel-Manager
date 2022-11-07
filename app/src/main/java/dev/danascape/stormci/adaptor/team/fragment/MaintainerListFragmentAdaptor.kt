@@ -28,9 +28,10 @@ class MaintainerListFragmentAdaptor(private val context: Context, private val mM
                 .load(url)
                 .into(holder.image)
         }
-        holder.positionNumber.text = "Member: ${position + 1}"
         holder.name.text = mMaintainer[position].name
         holder.title.text = mMaintainer[position].title
+        holder.github.text = "Github"
+        holder.linkedin.text = "Linkedin"
     }
 
     override fun getItemCount(): Int {
@@ -38,9 +39,10 @@ class MaintainerListFragmentAdaptor(private val context: Context, private val mM
     }
 
     class MaintainerViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
         val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
         val title: TextView = itemView.findViewById<View>(R.id.tvTitle) as TextView
         val image: ImageView = itemView.findViewById<ImageView>(R.id.imgProfile) as ImageView
+        val github: TextView = itemView.findViewById<View>(R.id.tvGithub) as TextView
+        val linkedin: TextView = itemView.findViewById<View>(R.id.tvLinkedin) as TextView
     }
 }
