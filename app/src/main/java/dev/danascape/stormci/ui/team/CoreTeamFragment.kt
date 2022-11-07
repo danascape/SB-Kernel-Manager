@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
@@ -28,9 +29,9 @@ class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = LinearLayoutManager(context)
+        val gridManager = GridLayoutManager(context, 2)
         recyclerView = requireView().findViewById(R.id.rvCoreTeam)
-        recyclerView.layoutManager = layoutManager
+        recyclerView.layoutManager = gridManager
         mAdapter = activity?.let { CoreTeamListAdaptor(it, mCoreTeam, R.layout.core_team_item) }
         recyclerView.adapter = mAdapter
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
@@ -28,9 +29,9 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = LinearLayoutManager(context)
+        val gridManager = GridLayoutManager(context, 2)
         MaintainerView = requireView().findViewById(R.id.rvMaintainer)
-        MaintainerView.layoutManager = layoutManager
+        MaintainerView.layoutManager = gridManager
         mMaintainerAdaptor = activity?.let { MaintainerListAdaptor(it,mMaintainer, R.layout.core_team_item) }
         MaintainerView.adapter = mMaintainerAdaptor
 
