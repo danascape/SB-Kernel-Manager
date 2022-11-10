@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp">
+        android:layout_height="100dp">
 
-        <TextView
-            android:id="@+id/tvPositionNumber"
-            android:layout_width="69dp"
-            android:layout_height="49dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvName"
+            app:layout_constraintHorizontal_bias="0.551"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32" />
 
         <TextView
             android:id="@+id/tvName"
@@ -23,10 +27,9 @@
             android:layout_height="33dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_toEndOf="@+id/tvPositionNumber" />
+            app:layout_constraintBottom_toTopOf="@+id/tvMaintainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvMaintainer"
@@ -35,10 +38,9 @@
             android:layout_below="@+id/tvName"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="101dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="9dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
