@@ -1,6 +1,6 @@
 package dev.danascape.stormci.model.team
 
-class CoreTeam {
+class Team {
     val name: String? = null
     val image: String? = null
     val title: String? = null

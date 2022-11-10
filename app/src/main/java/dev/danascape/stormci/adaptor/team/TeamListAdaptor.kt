@@ -8,27 +8,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
-import dev.danascape.stormci.model.team.Maintainer
+import dev.danascape.stormci.model.team.Team
 
-class MaintainerListAdaptor(private val context: Context, private val mMaintainer: MutableList<Maintainer>, private val mRowLayout: Int) : RecyclerView.Adapter<MaintainerListAdaptor.MaintainerViewHolder>() {
+class TeamListAdaptor(private val context: Context, private val mTeam: MutableList<Team>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaintainerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)
-        return MaintainerViewHolder(view)
+        return TeamViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: MaintainerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         holder.positionNumber.text = "Member: ${position + 1}"
-        holder.name.text = mMaintainer[position].name
-        holder.title.text = mMaintainer[position].title
+        holder.name.text = mTeam[position].name
+        holder.title.text = mTeam[position].title
     }
 
     override fun getItemCount(): Int {
-        return mMaintainer.size
+        return mTeam.size
     }
 
-    class MaintainerViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
+    class TeamViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
         val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
         val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
         val title: TextView = itemView.findViewById<View>(R.id.tvTitle) as TextView

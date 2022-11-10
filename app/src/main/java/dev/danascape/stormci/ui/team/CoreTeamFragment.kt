@@ -10,18 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adaptor.team.fragment.TeamListFragmentAdaptor
 import dev.danascape.stormci.api.client.GithubAPIClient
-import dev.danascape.stormci.api.team.CoreTeamService
-import dev.danascape.stormci.model.team.CoreTeam
-import dev.danascape.stormci.model.team.CoreTeamList
+import dev.danascape.stormci.api.team.TeamService
+import dev.danascape.stormci.model.team.Team
+import dev.danascape.stormci.model.team.TeamList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
 
-    private var mApiService: CoreTeamService? = null
+    private var mApiService: TeamService? = null
     private var mAdapter: TeamListFragmentAdaptor?= null;
-    private var mCoreTeam: MutableList<CoreTeam> = ArrayList()
+    private var mCoreTeam: MutableList<Team> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
 
@@ -34,25 +34,25 @@ class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
         mAdapter = activity?.let { TeamListFragmentAdaptor(it, mCoreTeam, R.layout.fragment_team_item) }
         recyclerView.adapter = mAdapter
 
-        mApiService = GithubAPIClient.client.create(CoreTeamService::class.java)
+        mApiService = GithubAPIClient.client.create(TeamService::class.java)
         fetchCoreTeamList()
     }
 
     private fun fetchCoreTeamList() {
         val call = mApiService!!.fetchCoreTeam()
 
-        call.enqueue(object : Callback<CoreTeamList> {
+        call.enqueue(object : Callback<TeamList> {
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<CoreTeamList>, response: Response<CoreTeamList>) {
+            override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
                 Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
                     mCoreTeam.addAll(Response.members!!)
                     mAdapter!!.notifyDataSetChanged()
-                    mCoreTeam=ArrayList<CoreTeam>()
+                    mCoreTeam=ArrayList<Team>()
                 }
             }
-            override fun onFailure(call: Call<CoreTeamList>, t: Throwable) {
+            override fun onFailure(call: Call<TeamList>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
         })
