@@ -69,13 +69,13 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         val layoutManager = LinearLayoutManager(context)
         recyclerView = requireView().findViewById(R.id.rvCoreTeam)
         recyclerView.layoutManager = layoutManager
-        mAdapter = activity?.let { TeamListAdaptor(it, mTeam, R.layout.core_team_item) }
+        mAdapter = activity?.let { TeamListAdaptor(it, mTeam, R.layout.team_item) }
         recyclerView.adapter = mAdapter
 
         MaintainerView = requireView().findViewById(R.id.rvMaintainer)
 //        MaintainerView.layoutManager = layoutManager
         MaintainerView.setLayoutManager(LinearLayoutManager(getActivity()))
-        mMaintainerAdaptor = activity?.let { TeamListAdaptor(it,mTeam, R.layout.core_team_item) }
+        mMaintainerAdaptor = activity?.let { TeamListAdaptor(it,mTeam, R.layout.team_item) }
         MaintainerView.adapter = mMaintainerAdaptor
 
         mApiService = GithubAPIClient.client.create(TeamService::class.java)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/miHome"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/black"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/miDevices"
+        android:icon="@drawable/ic_devices"
+        android:iconTint="@color/black"
+        android:title="Devices" />
+
+    <item
+        android:id="@+id/miTeam"
+        android:icon="@drawable/ic_team"
+        android:iconTint="@color/black"
+        android:title="Team" />
+
+</menu>

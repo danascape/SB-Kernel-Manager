@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         val devicesFragment = DevicesFragment()
         setCurrentFragment(homeFragment)
 
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+        binding.bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.miHome -> setCurrentFragment(homeFragment)
                 R.id.miTeam -> setCurrentFragment(teamFragment)

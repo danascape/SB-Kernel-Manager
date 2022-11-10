@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.06" />
 
     <FrameLayout
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="335dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="150dp"
@@ -53,7 +53,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="335dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="450dp"
