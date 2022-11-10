@@ -5,15 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.Large.WanderingCubes"
+    <ProgressBar
+        android:id="@+id/pbDevice"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:SpinKit_Color="@color/teal_200"
-         />
+        android:layout_centerInParent="true"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -24,6 +21,7 @@
             android:id="@+id/rvDevices"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </FrameLayout>
 
     <TextView

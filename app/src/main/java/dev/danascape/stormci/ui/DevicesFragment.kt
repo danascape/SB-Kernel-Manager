@@ -25,24 +25,23 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
     private var mApiService: DevicesService? = null
     private var mAdapter: DevicesListAdaptor?= null;
     private var mDevices: MutableList<Devices> = ArrayList()
+    private var progressBar: ProgressBar? = null
 
     private lateinit var recyclerView: RecyclerView
 
-    private  var progressBar: ProgressBar? =null
-    private  var doubleBounce: Sprite=WanderingCubes()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val layoutManager = LinearLayoutManager(context)
         recyclerView = requireView().findViewById(R.id.rvDevices)
-	    progressBar = requireView().findViewById(R.id.spin_kit)
+	    progressBar = requireView().findViewById(R.id.pbDevice)
         recyclerView.layoutManager = layoutManager
         mAdapter = activity?.let { DevicesListAdaptor(it, mDevices, R.layout.devices_item) }
         recyclerView.adapter = mAdapter
 
         mApiService = GithubAPIClient.client.create(DevicesService::class.java)
-        progressBar?.setIndeterminateDrawable(doubleBounce)
-        progressBar?.visibility=View.VISIBLE
+        progressBar?.isIndeterminate()
+        progressBar?.visibility = View.VISIBLE
         fetchDevicesList()
     }
 
@@ -53,7 +52,7 @@ class DevicesFragment : Fragment(R.layout.fragment_devices) {
 
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<DevicesList>, response: Response<DevicesList>) {
-                progressBar?.visibility=View.GONE
+                progressBar?.visibility = View.GONE
                 Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.devices!!.size)
                 val Response = response.body()
                 if (Response != null) {
