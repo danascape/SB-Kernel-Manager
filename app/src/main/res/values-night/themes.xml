@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.StormCI" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
@@ -28,7 +31,6 @@
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
     </style>
-
     <style name="splashScreenTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/ic_android_logo</item>
         <item name="android:statusBarColor">@color/black</item>
