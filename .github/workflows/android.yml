@@ -18,6 +18,6 @@ jobs:
       -
         name: Construction
         run: |
-            git clone -b master --single-branch https://github.com/danascape/StormCI.git Build
+            git clone -b main --single-branch https://github.com/danascape/StormCI.git Build
             cd Build
             ./gradlew build
