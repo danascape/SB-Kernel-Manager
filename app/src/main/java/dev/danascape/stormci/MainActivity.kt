@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_StormCI)
+//        setTheme(R.style.Theme_StormCI)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
