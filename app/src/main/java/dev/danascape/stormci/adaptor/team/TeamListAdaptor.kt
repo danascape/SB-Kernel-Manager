@@ -11,12 +11,14 @@ import dev.danascape.stormci.R
 import dev.danascape.stormci.model.team.Team
 
 class TeamListAdaptor(
-    private val context: Context, private val mTeam: MutableList<Team>,
+    private val context: Context,
+    private val mTeam: MutableList<Team>
 ) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.team_item, parent, false)
-        return TeamViewHolder(view)
+        return TeamViewHolder(
+            LayoutInflater.from(context).inflate(R.layout.team_item, parent, false)
+        )
     }
 
     @SuppressLint("SetTextI18n")

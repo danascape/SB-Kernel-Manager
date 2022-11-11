@@ -79,6 +79,8 @@
             android:id="@+id/rvMaintainer"
             android:layout_width="match_parent"
             android:layout_marginTop="35dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/team_item"
+            />
     </FrameLayout>
 </RelativeLayout>

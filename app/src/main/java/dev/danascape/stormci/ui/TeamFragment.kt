@@ -37,15 +37,25 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     private var mTeam: MutableList<Team> = ArrayList()
 //    private var mMaintainer: MutableList<Team> = ArrayList()
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var MaintainerView: RecyclerView
+//    private lateinit var recyclerView: RecyclerView
+//    private lateinit var MaintainerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTeamBinding.inflate(inflater, container, false)
+        mAdapter = TeamListAdaptor(requireActivity(), mTeam)
+        binding.rvCoreTeam.layoutManager = LinearLayoutManager(activity)
+        binding.rvCoreTeam.setHasFixedSize(true)
+        binding.rvCoreTeam.adapter = mAdapter
+
+        mMaintainerAdaptor = TeamListAdaptor(requireActivity(), mTeam)
+        binding.rvMaintainer.layoutManager = LinearLayoutManager(activity)
+        binding.rvMaintainer.setHasFixedSize(true)
+        binding.rvMaintainer.adapter = mMaintainerAdaptor
+
         return binding.root
     }
 
@@ -99,6 +109,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
                     val adapter = TeamListAdaptor(requireActivity(), mTeam)
                     binding.rvCoreTeam.adapter = adapter
                     mTeam = ArrayList<Team>()
+
                 }
             }
 
