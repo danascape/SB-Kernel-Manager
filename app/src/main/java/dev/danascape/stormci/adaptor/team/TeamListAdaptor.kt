@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.model.team.Team
 
-class TeamListAdaptor(private val context: Context, private val mTeam: MutableList<Team>, private val mRowLayout: Int) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
+class TeamListAdaptor(
+    private val context: Context, private val mTeam: MutableList<Team>,
+) : RecyclerView.Adapter<TeamListAdaptor.TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.team_item, parent, false)
         return TeamViewHolder(view)
     }
 
@@ -29,7 +31,8 @@ class TeamListAdaptor(private val context: Context, private val mTeam: MutableLi
     }
 
     class TeamViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val positionNumber: TextView = itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
+        val positionNumber: TextView =
+            itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
         val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
         val title: TextView = itemView.findViewById<View>(R.id.tvTitle) as TextView
     }

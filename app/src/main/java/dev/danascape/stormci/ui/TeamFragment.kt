@@ -26,12 +26,12 @@ import retrofit2.Response
 class TeamFragment : Fragment(R.layout.fragment_team) {
     private var _binding: FragmentTeamBinding? = null
     private val binding
-    get() = _binding!!
+        get() = _binding!!
 
     private var mApiService: TeamService? = null
 //    private var mApiMaintainerService: MaintainerService? = null
 
-    private var mAdapter: TeamListAdaptor?= null
+    private var mAdapter: TeamListAdaptor? = null
     private var mMaintainerAdaptor: TeamListAdaptor? = null
 
     private var mTeam: MutableList<Team> = ArrayList()
@@ -66,17 +66,17 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
             transaction.commit()
         }
 
-        val layoutManager = LinearLayoutManager(context)
-        recyclerView = requireView().findViewById(R.id.rvCoreTeam)
-        recyclerView.layoutManager = layoutManager
-        mAdapter = activity?.let { TeamListAdaptor(it, mTeam, R.layout.team_item) }
-        recyclerView.adapter = mAdapter
-
-        MaintainerView = requireView().findViewById(R.id.rvMaintainer)
-//        MaintainerView.layoutManager = layoutManager
-        MaintainerView.setLayoutManager(LinearLayoutManager(getActivity()))
-        mMaintainerAdaptor = activity?.let { TeamListAdaptor(it,mTeam, R.layout.team_item) }
-        MaintainerView.adapter = mMaintainerAdaptor
+//        val layoutManager = LinearLayoutManager(context)
+//        recyclerView = requireView().findViewById(R.id.rvCoreTeam)
+//        recyclerView.layoutManager = layoutManager
+//        mAdapter = activity?.let { TeamListAdaptor(it, mTeam, R.layout.team_item) }
+//        recyclerView.adapter = mAdapter
+//
+//        MaintainerView = requireView().findViewById(R.id.rvMaintainer)
+////        MaintainerView.layoutManager = layoutManager
+//        MaintainerView.setLayoutManager(LinearLayoutManager(getActivity()))
+//        mMaintainerAdaptor = activity?.let { TeamListAdaptor(it,mTeam, R.layout.team_item) }
+//        MaintainerView.adapter = mMaintainerAdaptor
 
         mApiService = GithubAPIClient.client.create(TeamService::class.java)
 
@@ -94,10 +94,14 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
                 val Response = response.body()
                 if (Response != null) {
                     mTeam.addAll(Response.members!!)
-                    mAdapter!!.notifyDataSetChanged()
+                    binding.rvCoreTeam.layoutManager = LinearLayoutManager(activity)
+                    binding.rvCoreTeam.setHasFixedSize(true)
+                    val adapter = TeamListAdaptor(requireActivity(), mTeam)
+                    binding.rvCoreTeam.adapter = adapter
                     mTeam = ArrayList<Team>()
                 }
             }
+
             override fun onFailure(call: Call<TeamList>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
@@ -109,18 +113,20 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
 
         call.enqueue(object : Callback<TeamList> {
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(
-                call: Call<TeamList>,
-                response: Response<TeamList>
-            ) {
+            override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
                 Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
                     mTeam.addAll(Response.members!!)
-                    mMaintainerAdaptor!!.notifyDataSetChanged()
+                    binding.rvMaintainer.layoutManager = LinearLayoutManager(activity)
+                    binding.rvMaintainer.setHasFixedSize(true)
+                    val adapter = TeamListAdaptor(requireActivity(), mTeam)
+                    binding.rvMaintainer.adapter = adapter
                     mTeam = ArrayList<Team>()
+
                 }
             }
+
             override fun onFailure(call: Call<TeamList>, t: Throwable) {
                 Log.d("StormCI", "Failed to download JSON")
             }
