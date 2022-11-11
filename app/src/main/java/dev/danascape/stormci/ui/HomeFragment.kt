@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.color.DynamicColors
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.ui.home.BuildHistoryFragment
