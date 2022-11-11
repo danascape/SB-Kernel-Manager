@@ -6,8 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintGuide_percent=".15"
     app:layout_constraintHeight_percent=".15"
-    app:layout_constraintWidth_percent=".85">
-`
+    app:layout_constraintWidth_percent=".85"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
         <TextView
             android:id="@+id/tvPositionNumber"
             android:layout_width="69dp"
-            android:layout_height="49dp"
+            android:layout_height="20dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -30,7 +32,7 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="254dp"
-            android:layout_height="48dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/tvPositionNumber"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
@@ -45,7 +47,7 @@
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="267dp"
-            android:layout_height="48dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/tvName"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"

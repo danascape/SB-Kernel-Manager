@@ -6,7 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintGuide_percent=".15"
     app:layout_constraintHeight_percent=".15"
-    app:layout_constraintWidth_percent=".85">
+    app:layout_constraintWidth_percent=".85"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
 `
 
     <androidx.constraintlayout.widget.ConstraintLayout

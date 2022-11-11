@@ -31,8 +31,4 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
-    <style name="splashScreenTheme" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/ic_android_logo</item>
-        <item name="android:statusBarColor">@color/black</item>
-    </style>
 </resources>
