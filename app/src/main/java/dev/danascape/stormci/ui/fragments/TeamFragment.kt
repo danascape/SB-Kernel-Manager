@@ -20,9 +20,7 @@ import dev.danascape.stormci.models.team.TeamList
 import dev.danascape.stormci.ui.fragments.team.CoreTeamFragment
 import dev.danascape.stormci.ui.fragments.team.MaintainerFragment
 import dev.danascape.stormci.util.Constants.Companion.TAG
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -83,33 +81,47 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     }
 
     private fun fetchCoreTeamList() {
-        GlobalScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.IO).launch {
             val response = mApiService!!.fetchCoreTeam().awaitResponse()
-            if(response.isSuccessful) {
-                mTeam.addAll(response.body()!!.members!!)
-                binding.rvCoreTeam.layoutManager = LinearLayoutManager(activity)
-                binding.rvCoreTeam.setHasFixedSize(true)
-                val adapter = TeamListAdapter(requireActivity(), mTeam)
-                binding.rvCoreTeam.adapter = adapter
-                mTeam = ArrayList<Team>()
-            } else {
-                Log.d(TAG, "Failed to fetch Team List")
+            withContext(Dispatchers.Main) {
+                try {
+                    if(response.isSuccessful) {
+                        mTeam.addAll(response.body()!!.members!!)
+                        binding.rvCoreTeam.layoutManager = LinearLayoutManager(activity)
+                        binding.rvCoreTeam.setHasFixedSize(true)
+                        val adapter = TeamListAdapter(requireActivity(), mTeam)
+                        binding.rvCoreTeam.adapter = adapter
+                        mTeam = ArrayList<Team>()
+                    } else {
+                        Log.d(TAG, "Failed to fetch Team List")
+                    }
+                } catch (e: Throwable) {
+                    Log.d(TAG, "Something else went wrong")
+                }
             }
+
         }
     }
 
     private fun fetchMaintainerList() {
-        GlobalScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.IO).launch {
             val response = mApiService!!.fetchMaintainer().awaitResponse()
-            if(response.isSuccessful) {
-                mTeam.addAll(response.body()!!.members!!)
-                binding.rvMaintainer.layoutManager = LinearLayoutManager(activity)
-                binding.rvMaintainer.setHasFixedSize(true)
-                val adapter = TeamListAdapter(requireActivity(), mTeam)
-                binding.rvMaintainer.adapter = adapter
-                mTeam = ArrayList<Team>()
-            } else {
-                Log.d(TAG, "Failed to fetch Team List")
+            withContext(Dispatchers.Main) {
+                try {
+                    if(response.isSuccessful) {
+                        mTeam.addAll(response.body()!!.members!!)
+                        binding.rvMaintainer.layoutManager = LinearLayoutManager(activity)
+                        binding.rvMaintainer.setHasFixedSize(true)
+                        val adapter = TeamListAdapter(requireActivity(), mTeam)
+                        binding.rvMaintainer.adapter = adapter
+                        mTeam = ArrayList<Team>()
+                    } else {
+                        Log.d(TAG, "Failed to fetch Team List")
+                    }
+
+                } catch (e: Throwable) {
+                    Log.d(TAG, "Something else went wrong")
+                }
             }
         }
     }

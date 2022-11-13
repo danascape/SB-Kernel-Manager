@@ -14,9 +14,7 @@ import dev.danascape.stormci.api.team.TeamService
 import dev.danascape.stormci.models.team.Team
 import dev.danascape.stormci.models.team.TeamList
 import dev.danascape.stormci.util.Constants.Companion.TAG
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,15 +41,22 @@ class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
         fetchCoreTeamList()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun fetchCoreTeamList() {
-        GlobalScope.launch(Dispatchers.Main) {
-            val response = mApiService!!.fetchCoreTeam()!!.awaitResponse()
-            if(response.isSuccessful) {
-                mCoreTeam.addAll(response.body()!!.members!!)
-                mAdapter!!.notifyDataSetChanged()
-                mCoreTeam=ArrayList<Team>()
-            } else {
-                Log.d(TAG, "Failed to fetch Team List")
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = mApiService!!.fetchCoreTeam().awaitResponse()
+            withContext(Dispatchers.Main) {
+                try {
+                    if(response.isSuccessful) {
+                        mCoreTeam.addAll(response.body()!!.members!!)
+                        mAdapter!!.notifyDataSetChanged()
+                        mCoreTeam=ArrayList<Team>()
+                    } else {
+                        Log.d(TAG, "Failed to fetch Team List")
+                    }
+                } catch (e: Throwable) {
+                    Log.d(TAG, "Something else went wrong")
+                }
             }
         }
     }

@@ -13,9 +13,7 @@ import dev.danascape.stormci.api.DroneAPI
 import dev.danascape.stormci.api.ci.DroneService
 import dev.danascape.stormci.models.ci.BuildHistory
 import dev.danascape.stormci.util.Constants.Companion.TAG
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.awaitResponse
 
 class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
@@ -41,14 +39,20 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchBuildHistory() {
-        GlobalScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.IO).launch {
             val response = mApiService?.fetchBuildHistory()!!.awaitResponse()
-            if(response.isSuccessful) {
-                mBuildHistory.addAll(response.body()!!)
-                mAdapter!!.notifyDataSetChanged()
-                mBuildHistory = ArrayList<BuildHistory>()
-            } else {
-                Log.d(TAG, "Failed to fetch build history")
+            withContext(Dispatchers.Main) {
+                try {
+                    if(response.isSuccessful) {
+                        mBuildHistory.addAll(response.body()!!)
+                        mAdapter!!.notifyDataSetChanged()
+                        mBuildHistory = ArrayList<BuildHistory>()
+                    } else {
+                        Log.d(TAG, "Failed to fetch build history")
+                    }
+                } catch (e: Throwable) {
+                    Log.d(TAG, "Something else went wrong")
+                }
             }
         }
     }

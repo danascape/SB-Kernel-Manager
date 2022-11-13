@@ -13,9 +13,7 @@ import dev.danascape.stormci.api.GithubAPI
 import dev.danascape.stormci.api.device.DeviceService
 import dev.danascape.stormci.models.device.Device
 import dev.danascape.stormci.util.Constants.Companion.TAG
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class DeviceFragment : Fragment(R.layout.fragment_devices) {
 
@@ -43,15 +41,21 @@ class DeviceFragment : Fragment(R.layout.fragment_devices) {
     }
 
     private fun fetchDevicesList() {
-        GlobalScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.IO).launch {
             val response = mApiService?.fetchDevices()
-            if(response!!.isSuccessful) {
-                    progressBar?.visibility = View.GONE
-                    mDevices.addAll(response.body()!!.devices!!)
-                    mAdapter!!.notifyDataSetChanged()
-                    mDevices=ArrayList<Device>()
-            } else {
-                Log.d(TAG, "Failed to fetch devices")
+            withContext(Dispatchers.Main) {
+                try {
+                    if(response!!.isSuccessful) {
+                        progressBar?.visibility = View.GONE
+                        mDevices.addAll(response.body()!!.devices!!)
+                        mAdapter!!.notifyDataSetChanged()
+                        mDevices=ArrayList<Device>()
+                    } else {
+                        Log.d(TAG, "Failed to fetch devices")
+                    }
+                }  catch (e: Throwable) {
+                    Log.d(TAG, "Something else went wrong")
+                }
             }
         }
     }
