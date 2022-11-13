@@ -3,19 +3,20 @@ package dev.danascape.stormci.ui.fragments.home
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adapters.ci.BuildHistoryAdapter
-import dev.danascape.stormci.api.ci.DroneService
 import dev.danascape.stormci.api.DroneAPI
+import dev.danascape.stormci.api.ci.DroneService
 import dev.danascape.stormci.models.ci.BuildHistory
 import dev.danascape.stormci.util.Constants.Companion.TAG
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.awaitResponse
 
 class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
 
@@ -35,31 +36,20 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         recyclerView.adapter = mAdapter
 
         mApiService = DroneAPI.client.create(DroneService::class.java)
-        fetchDevicesList()
+        fetchBuildHistory()
     }
 
-    private fun fetchDevicesList() {
-        val call = mApiService!!.fetchBuildHistory()
-
-        call.enqueue(object : Callback<List<BuildHistory>> {
-
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(
-                call: Call<List<BuildHistory>>,
-                response: Response<List<BuildHistory>>
-            ) {
-                Log.d(TAG, "Total Devices history Fetched: " + response.body()!!.size)
-                val Response = response.body()
-                if (Response != null) {
-                    mBuildHistory.addAll(Response)
-                    mAdapter!!.notifyDataSetChanged()
-                    mBuildHistory = ArrayList<BuildHistory>()
-                }
+    @SuppressLint("NotifyDataSetChanged")
+    private fun fetchBuildHistory() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = mApiService?.fetchBuildHistory()!!.awaitResponse()
+            if(response.isSuccessful) {
+                mBuildHistory.addAll(response.body()!!)
+                mAdapter!!.notifyDataSetChanged()
+                mBuildHistory = ArrayList<BuildHistory>()
+            } else {
+                Log.d(TAG, "Failed to fetch build history")
             }
-            override fun onFailure(call: Call<List<BuildHistory>>, t: Throwable) {
-                Log.d(TAG, "Failed to download JSON")
-            }
-        })
+        }
     }
-
 }
