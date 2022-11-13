@@ -82,7 +82,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
 
     private fun fetchCoreTeamList() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = mApiService!!.fetchCoreTeam().awaitResponse()
+            val response = mApiService!!.fetchCoreTeam()
             withContext(Dispatchers.Main) {
                 try {
                     if(response.isSuccessful) {
@@ -105,7 +105,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
 
     private fun fetchMaintainerList() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = mApiService!!.fetchMaintainer().awaitResponse()
+            val response = mApiService!!.fetchMaintainer()
             withContext(Dispatchers.Main) {
                 try {
                     if(response.isSuccessful) {

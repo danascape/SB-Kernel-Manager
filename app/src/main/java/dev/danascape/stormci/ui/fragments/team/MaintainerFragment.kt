@@ -44,7 +44,7 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchMaintainerList() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = mApiService!!.fetchMaintainer().awaitResponse()
+            val response = mApiService!!.fetchMaintainer()
             withContext(Dispatchers.Main) {
                 try {
                     if(response.isSuccessful) {

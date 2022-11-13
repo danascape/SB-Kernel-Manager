@@ -44,7 +44,7 @@ class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchCoreTeamList() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = mApiService!!.fetchCoreTeam().awaitResponse()
+            val response = mApiService!!.fetchCoreTeam()
             withContext(Dispatchers.Main) {
                 try {
                     if(response.isSuccessful) {

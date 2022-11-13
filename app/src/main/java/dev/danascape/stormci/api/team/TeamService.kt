@@ -1,13 +1,13 @@
 package dev.danascape.stormci.api.team
 
 import dev.danascape.stormci.models.team.TeamList
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface TeamService {
     @GET("team/core.json")
-    fun fetchCoreTeam(): Call<TeamList>
+    suspend fun fetchCoreTeam(): Response<TeamList>
 
     @GET("team/maintainers.json")
-    fun fetchMaintainer(): Call<TeamList>
+    suspend fun fetchMaintainer(): Response<TeamList>
 }

@@ -40,7 +40,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchBuildHistory() {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = mApiService?.fetchBuildHistory()!!.awaitResponse()
+            val response = mApiService?.fetchBuildHistory()!!
             withContext(Dispatchers.Main) {
                 try {
                     if(response.isSuccessful) {
