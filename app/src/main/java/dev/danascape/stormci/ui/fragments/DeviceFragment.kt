@@ -1,5 +1,6 @@
 package dev.danascape.stormci.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -40,6 +41,7 @@ class DeviceFragment : Fragment(R.layout.fragment_devices) {
         fetchDevicesList()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun fetchDevicesList() {
         CoroutineScope(Dispatchers.IO).launch {
             val response = mApiService?.fetchDevices()

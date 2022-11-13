@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.danascape.stormci.R
@@ -62,14 +63,14 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
 
         binding.btnCoreTeam.setOnClickListener {
             val CoreTeamFragment = CoreTeamFragment()
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.flFragment, CoreTeamFragment)
             transaction.commit()
         }
 
         binding.btnMaintainer.setOnClickListener {
             val MaintainerFragment = MaintainerFragment()
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.flFragment, MaintainerFragment)
             transaction.commit()
         }
