@@ -65,6 +65,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
             val CoreTeamFragment = CoreTeamFragment()
             val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.flFragment, CoreTeamFragment)
+            transaction.addToBackStack(null)
             transaction.commit()
         }
 
@@ -72,6 +73,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
             val MaintainerFragment = MaintainerFragment()
             val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.flFragment, MaintainerFragment)
+            transaction.addToBackStack(null)
             transaction.commit()
         }
 
