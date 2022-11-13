@@ -13,6 +13,7 @@ import dev.danascape.stormci.api.GithubAPI
 import dev.danascape.stormci.api.team.TeamService
 import dev.danascape.stormci.models.team.Team
 import dev.danascape.stormci.models.team.TeamList
+import dev.danascape.stormci.util.Constants.Companion.TAG
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,7 +45,7 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
         call.enqueue(object : Callback<TeamList> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
+                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
                     mCoreTeam.addAll(Response.members!!)
@@ -53,7 +54,7 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
                 }
             }
             override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d("StormCI", "Failed to download JSON")
+                Log.d(TAG, "Failed to download JSON")
             }
         })
     }

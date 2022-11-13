@@ -18,6 +18,7 @@ import dev.danascape.stormci.models.team.Team
 import dev.danascape.stormci.models.team.TeamList
 import dev.danascape.stormci.ui.fragments.team.CoreTeamFragment
 import dev.danascape.stormci.ui.fragments.team.MaintainerFragment
+import dev.danascape.stormci.util.Constants.Companion.TAG
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -82,7 +83,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         call.enqueue(object : Callback<TeamList> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
+                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
                     mTeam.addAll(Response.members!!)
@@ -96,7 +97,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
             }
 
             override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d("StormCI", "Failed to download JSON")
+                Log.d(TAG, "Failed to download JSON")
             }
         })
     }
@@ -107,7 +108,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
         call.enqueue(object : Callback<TeamList> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d("StormCI", "Total Members Fetched: " + response.body()!!.members!!.size)
+                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
                 val Response = response.body()
                 if (Response != null) {
                     mTeam.addAll(Response.members!!)
@@ -121,7 +122,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
             }
 
             override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d("StormCI", "Failed to download JSON")
+                Log.d(TAG, "Failed to download JSON")
             }
         })
     }

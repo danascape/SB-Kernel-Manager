@@ -12,6 +12,7 @@ import dev.danascape.stormci.adapters.device.DeviceListAdapter
 import dev.danascape.stormci.api.GithubAPI
 import dev.danascape.stormci.api.device.DeviceService
 import dev.danascape.stormci.models.device.Device
+import dev.danascape.stormci.util.Constants.Companion.TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -50,7 +51,7 @@ class DeviceFragment : Fragment(R.layout.fragment_devices) {
                     mAdapter!!.notifyDataSetChanged()
                     mDevices=ArrayList<Device>()
             } else {
-                Log.d("StormCI", "Failed to fetch devices")
+                Log.d(TAG, "Failed to fetch devices")
             }
         }
     }

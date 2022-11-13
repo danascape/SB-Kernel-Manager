@@ -12,6 +12,7 @@ import dev.danascape.stormci.adapters.ci.BuildHistoryAdapter
 import dev.danascape.stormci.api.ci.DroneService
 import dev.danascape.stormci.api.DroneAPI
 import dev.danascape.stormci.models.ci.BuildHistory
+import dev.danascape.stormci.util.Constants.Companion.TAG
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,7 +48,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
                 call: Call<List<BuildHistory>>,
                 response: Response<List<BuildHistory>>
             ) {
-                Log.d("StormCI", "Total Devices Fetched: " + response.body()!!.size)
+                Log.d(TAG, "Total Devices history Fetched: " + response.body()!!.size)
                 val Response = response.body()
                 if (Response != null) {
                     mBuildHistory.addAll(Response)
@@ -56,7 +57,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
                 }
             }
             override fun onFailure(call: Call<List<BuildHistory>>, t: Throwable) {
-                Log.d("StormCI", "Failed to download JSON")
+                Log.d(TAG, "Failed to download JSON")
             }
         })
     }
