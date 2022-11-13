@@ -1,8 +1,5 @@
 package dev.danascape.stormci.ui
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,13 +9,13 @@ import dev.danascape.stormci.databinding.ActivityMainBinding
 import dev.danascape.stormci.ui.fragments.DeviceFragment
 import dev.danascape.stormci.ui.fragments.HomeFragment
 import dev.danascape.stormci.ui.fragments.TeamFragment
+import dev.danascape.stormci.util.NetworkUtils.isOnline
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setTheme(R.style.Theme_StormCI)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -40,24 +37,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.miDevices -> setCurrentFragment(deviceFragment)
             }
             true
-        }
-    }
-
-    private fun isOnline(context: Context?): Boolean {
-
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-        val network = connectivityManager.activeNetwork ?: return false
-
-        val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
-
-        return when {
-            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-
-            // else return false
-            else -> false
         }
     }
 
