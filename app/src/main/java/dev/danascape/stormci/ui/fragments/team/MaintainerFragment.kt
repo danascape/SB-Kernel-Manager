@@ -14,9 +14,13 @@ import dev.danascape.stormci.api.team.TeamService
 import dev.danascape.stormci.models.team.Team
 import dev.danascape.stormci.models.team.TeamList
 import dev.danascape.stormci.util.Constants.Companion.TAG
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
 
@@ -36,26 +40,20 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
         MaintainerView.adapter = mAdapter
 
         mApiService = GithubAPI.client.create(TeamService::class.java)
-        fetchCoreTeamList()
+        fetchMaintainerList()
     }
 
-    private fun fetchCoreTeamList() {
-        val call = mApiService!!.fetchMaintainer()
-
-        call.enqueue(object : Callback<TeamList> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
-                val Response = response.body()
-                if (Response != null) {
-                    mCoreTeam.addAll(Response.members!!)
-                    mAdapter!!.notifyDataSetChanged()
-                    mCoreTeam=ArrayList<Team>()
-                }
+    @SuppressLint("NotifyDataSetChanged")
+    private fun fetchMaintainerList() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = mApiService!!.fetchMaintainer().awaitResponse()
+            if(response.isSuccessful) {
+                mCoreTeam.addAll(response.body()!!.members!!)
+                mAdapter!!.notifyDataSetChanged()
+                mCoreTeam=ArrayList<Team>()
+            } else {
+                Log.d(TAG, "Failed to fetch Team List")
             }
-            override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d(TAG, "Failed to download JSON")
-            }
-        })
+        }
     }
 }

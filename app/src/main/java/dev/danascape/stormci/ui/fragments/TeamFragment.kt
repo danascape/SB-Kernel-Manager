@@ -2,6 +2,7 @@ package dev.danascape.stormci.ui.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.Settings.Global
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,9 +20,13 @@ import dev.danascape.stormci.models.team.TeamList
 import dev.danascape.stormci.ui.fragments.team.CoreTeamFragment
 import dev.danascape.stormci.ui.fragments.team.MaintainerFragment
 import dev.danascape.stormci.util.Constants.Companion.TAG
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 class TeamFragment : Fragment(R.layout.fragment_team) {
     private var _binding: FragmentTeamBinding? = null
@@ -78,52 +83,34 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     }
 
     private fun fetchCoreTeamList() {
-        val call = mApiService!!.fetchCoreTeam()
-
-        call.enqueue(object : Callback<TeamList> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
-                val Response = response.body()
-                if (Response != null) {
-                    mTeam.addAll(Response.members!!)
-                    binding.rvCoreTeam.layoutManager = LinearLayoutManager(activity)
-                    binding.rvCoreTeam.setHasFixedSize(true)
-                    val adapter = TeamListAdapter(requireActivity(), mTeam)
-                    binding.rvCoreTeam.adapter = adapter
-                    mTeam = ArrayList<Team>()
-
-                }
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = mApiService!!.fetchCoreTeam().awaitResponse()
+            if(response.isSuccessful) {
+                mTeam.addAll(response.body()!!.members!!)
+                binding.rvCoreTeam.layoutManager = LinearLayoutManager(activity)
+                binding.rvCoreTeam.setHasFixedSize(true)
+                val adapter = TeamListAdapter(requireActivity(), mTeam)
+                binding.rvCoreTeam.adapter = adapter
+                mTeam = ArrayList<Team>()
+            } else {
+                Log.d(TAG, "Failed to fetch Team List")
             }
-
-            override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d(TAG, "Failed to download JSON")
-            }
-        })
+        }
     }
 
     private fun fetchMaintainerList() {
-        val call = mApiService!!.fetchMaintainer()
-
-        call.enqueue(object : Callback<TeamList> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
-                val Response = response.body()
-                if (Response != null) {
-                    mTeam.addAll(Response.members!!)
-                    binding.rvMaintainer.layoutManager = LinearLayoutManager(activity)
-                    binding.rvMaintainer.setHasFixedSize(true)
-                    val adapter = TeamListAdapter(requireActivity(), mTeam)
-                    binding.rvMaintainer.adapter = adapter
-                    mTeam = ArrayList<Team>()
-
-                }
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = mApiService!!.fetchMaintainer().awaitResponse()
+            if(response.isSuccessful) {
+                mTeam.addAll(response.body()!!.members!!)
+                binding.rvMaintainer.layoutManager = LinearLayoutManager(activity)
+                binding.rvMaintainer.setHasFixedSize(true)
+                val adapter = TeamListAdapter(requireActivity(), mTeam)
+                binding.rvMaintainer.adapter = adapter
+                mTeam = ArrayList<Team>()
+            } else {
+                Log.d(TAG, "Failed to fetch Team List")
             }
-
-            override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d(TAG, "Failed to download JSON")
-            }
-        })
+        }
     }
 }

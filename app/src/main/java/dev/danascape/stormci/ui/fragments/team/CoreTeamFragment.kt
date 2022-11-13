@@ -14,9 +14,13 @@ import dev.danascape.stormci.api.team.TeamService
 import dev.danascape.stormci.models.team.Team
 import dev.danascape.stormci.models.team.TeamList
 import dev.danascape.stormci.util.Constants.Companion.TAG
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.awaitResponse
 
 class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
 
@@ -40,22 +44,15 @@ class CoreTeamFragment : Fragment(R.layout.fragment_core_team) {
     }
 
     private fun fetchCoreTeamList() {
-        val call = mApiService!!.fetchCoreTeam()
-
-        call.enqueue(object : Callback<TeamList> {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
-                Log.d(TAG, "Total Members Fetched: " + response.body()!!.members!!.size)
-                val Response = response.body()
-                if (Response != null) {
-                    mCoreTeam.addAll(Response.members!!)
-                    mAdapter!!.notifyDataSetChanged()
-                    mCoreTeam=ArrayList<Team>()
-                }
+        GlobalScope.launch(Dispatchers.Main) {
+            val response = mApiService!!.fetchCoreTeam()!!.awaitResponse()
+            if(response.isSuccessful) {
+                mCoreTeam.addAll(response.body()!!.members!!)
+                mAdapter!!.notifyDataSetChanged()
+                mCoreTeam=ArrayList<Team>()
+            } else {
+                Log.d(TAG, "Failed to fetch Team List")
             }
-            override fun onFailure(call: Call<TeamList>, t: Throwable) {
-                Log.d(TAG, "Failed to download JSON")
-            }
-        })
+        }
     }
 }
