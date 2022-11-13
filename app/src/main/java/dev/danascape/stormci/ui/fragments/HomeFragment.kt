@@ -11,9 +11,8 @@ import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.ui.fragments.home.BuildHistoryFragment
 import dev.danascape.stormci.util.Constants
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
+import dev.danascape.stormci.util.DeviceUtils.readDeviceName
+import dev.danascape.stormci.util.DeviceUtils.readKernelVersion
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -52,45 +51,6 @@ class HomeFragment : Fragment() {
             val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
             transaction.replace(R.id.flFragment, BuildHistoryFragment)
             transaction.commit()
-        }
-    }
-    private fun readKernelVersion(): String {
-        try {
-            val p = Runtime.getRuntime().exec("uname -r")
-            val `is`: InputStream? = if (p.waitFor() == 0) {
-                p.inputStream
-            } else {
-                p.errorStream
-            }
-            val br = BufferedReader(
-                InputStreamReader(`is`),
-                32
-            )
-            val line = br.readLine()
-            br.close()
-            return line
-        } catch (ex: Exception) {
-            return "ERROR: " + ex.message
-        }
-    }
-
-    private fun readDeviceName(): String {
-        try {
-            val p = Runtime.getRuntime().exec("getprop ro.product.device")
-            val `is`: InputStream? = if (p.waitFor() == 0) {
-                p.inputStream
-            } else {
-                p.errorStream
-            }
-            val br = BufferedReader(
-                InputStreamReader(`is`),
-                32
-            )
-            val line = br.readLine()
-            br.close()
-            return line
-        } catch (ex: Exception) {
-            return "ERROR: " + ex.message
         }
     }
 }
