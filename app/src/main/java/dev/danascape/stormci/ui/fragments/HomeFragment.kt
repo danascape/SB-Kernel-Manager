@@ -11,8 +11,8 @@ import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.ui.fragments.home.BuildHistoryFragment
 import dev.danascape.stormci.util.Constants
-import dev.danascape.stormci.util.DeviceUtils.readDeviceName
-import dev.danascape.stormci.util.DeviceUtils.readKernelVersion
+import dev.danascape.stormci.util.DeviceUtils.getDeviceProperty
+
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val kernelVersion = readKernelVersion()
+        val kernelVersion = getDeviceProperty("uname -r")
         binding.tvKernel.text = kernelVersion
 
         if(kernelVersion.contains(Constants.KERNEL_NAME.lowercase(Locale.getDefault()))) {
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "Device is not supported", Toast.LENGTH_SHORT).show()
         }
 
-        val deviceName = readDeviceName()
+        val deviceName = getDeviceProperty("getprop ro.product.device")
         binding.tvDeviceName.text = deviceName
 
         return binding.root
