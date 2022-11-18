@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.elevation.SurfaceColors
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.ActivityMainBinding
 import dev.danascape.stormci.ui.fragments.DeviceFragment
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        window.statusBarColor=SurfaceColors.SURFACE_0.getColor(this)
         if(!isOnline(this)) {
             Toast.makeText(this, "No internet Connection", Toast.LENGTH_SHORT).show()
             finish()
