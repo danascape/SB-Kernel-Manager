@@ -2,21 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/miHome"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:iconTint="@color/black"
+        android:menuCategory="secondary"
         android:title="Home" />
 
     <item
-        android:id="@+id/miDevices"
+        android:id="@+id/deviceFragment"
         android:icon="@drawable/ic_devices"
         android:iconTint="@color/black"
+        android:menuCategory="secondary"
         android:title="Devices" />
 
     <item
-        android:id="@+id/miTeam"
+        android:id="@+id/teamFragment"
         android:icon="@drawable/ic_team"
         android:iconTint="@color/black"
+        android:menuCategory="secondary"
         android:title="Team" />
 
 </menu>

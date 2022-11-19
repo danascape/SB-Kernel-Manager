@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="dev.danascape.stormci.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_buildHistoryFragment2"
+            app:destination="@id/buildHistoryFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/deviceFragment"
+        android:name="dev.danascape.stormci.ui.fragments.DeviceFragment"
+        android:label="fragment_devices"
+        tools:layout="@layout/fragment_devices" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="dev.danascape.stormci.ui.fragments.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" >
+        <action
+            android:id="@+id/action_teamFragment_to_coreTeamFragment"
+            app:destination="@id/coreTeamFragment" />
+        <action
+            android:id="@+id/action_teamFragment_to_maintainerFragment"
+            app:destination="@id/maintainerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buildHistoryFragment2"
+        android:name="dev.danascape.stormci.ui.fragments.home.BuildHistoryFragment"
+        android:label="fragment_build_history"
+        tools:layout="@layout/fragment_build_history" />
+    <fragment
+        android:id="@+id/coreTeamFragment"
+        android:name="dev.danascape.stormci.ui.fragments.team.CoreTeamFragment"
+        android:label="fragment_core_team"
+        tools:layout="@layout/fragment_core_team" />
+    <fragment
+        android:id="@+id/maintainerFragment"
+        android:name="dev.danascape.stormci.ui.fragments.team.MaintainerFragment"
+        android:label="fragment_maintainer"
+        tools:layout="@layout/fragment_maintainer" />
+</navigation>

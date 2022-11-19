@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.ui.fragments.home.BuildHistoryFragment
@@ -45,12 +46,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.btnHistory.setOnClickListener {
-            val BuildHistoryFragment = BuildHistoryFragment()
-            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.flFragment, BuildHistoryFragment)
-            transaction.commit()
+            val action=HomeFragmentDirections.actionHomeFragmentToBuildHistoryFragment2()
+            findNavController().navigate(action)
         }
     }
 }
