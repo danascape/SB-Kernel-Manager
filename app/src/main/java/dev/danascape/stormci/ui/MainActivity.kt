@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.elevation.SurfaceColors
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.ActivityMainBinding
@@ -26,24 +29,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "No internet Connection", Toast.LENGTH_SHORT).show()
             finish()
         }
-        val homeFragment = HomeFragment()
-        val teamFragment = TeamFragment()
-        val deviceFragment = DeviceFragment()
-        setCurrentFragment(homeFragment)
-
-        binding.bottomNav.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.miHome -> setCurrentFragment(homeFragment)
-                R.id.miTeam -> setCurrentFragment(teamFragment)
-                R.id.miDevices -> setCurrentFragment(deviceFragment)
-            }
-            true
-        }
+        val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController=navHostFragment.navController
+        binding.bottomNav.setupWithNavController(navController)
     }
 
-    private fun setCurrentFragment(fragment: Fragment)=
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment,fragment)
-            commit()
-        }
 }

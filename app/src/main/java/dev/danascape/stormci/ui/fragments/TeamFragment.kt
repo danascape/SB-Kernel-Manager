@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adapters.team.TeamListAdapter
@@ -61,26 +62,20 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnCoreTeam.setOnClickListener {
-            val CoreTeamFragment = CoreTeamFragment()
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.flFragment, CoreTeamFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-
-        binding.btnMaintainer.setOnClickListener {
-            val MaintainerFragment = MaintainerFragment()
-            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.flFragment, MaintainerFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-
         mApiService = GithubAPI.client.create(TeamService::class.java)
 
         fetchCoreTeamList()
         fetchMaintainerList()
+
+        binding.btnCoreTeam.setOnClickListener {
+            val action=TeamFragmentDirections.actionTeamFragmentToCoreTeamFragment()
+            findNavController().navigate(action)
+        }
+
+        binding.btnMaintainer.setOnClickListener {
+            val action=TeamFragmentDirections.actionTeamFragmentToMaintainerFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun fetchCoreTeamList() {
