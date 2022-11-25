@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adapters.team.fragment.TeamListFragmentAdapter
-import dev.danascape.stormci.api.GithubAPI
 import dev.danascape.stormci.api.team.TeamService
 import dev.danascape.stormci.models.team.Team
 import dev.danascape.stormci.models.team.TeamList
@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.awaitResponse
 
+@AndroidEntryPoint
 class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
 
     private var mApiService: TeamService? = null
@@ -37,7 +38,7 @@ class MaintainerFragment : Fragment(R.layout.fragment_maintainer) {
         mAdapter = activity?.let { TeamListFragmentAdapter(it, mCoreTeam, R.layout.fragment_team_item) }
         MaintainerView.adapter = mAdapter
 
-        mApiService = GithubAPI.client.create(TeamService::class.java)
+        //mApiService = GithubAPI.client.create(TeamService::class.java)
         fetchMaintainerList()
     }
 

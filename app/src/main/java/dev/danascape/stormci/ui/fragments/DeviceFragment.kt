@@ -8,14 +8,15 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adapters.device.DeviceListAdapter
-import dev.danascape.stormci.api.GithubAPI
 import dev.danascape.stormci.api.device.DeviceService
 import dev.danascape.stormci.models.device.Device
 import dev.danascape.stormci.util.Constants.Companion.TAG
 import kotlinx.coroutines.*
 
+@AndroidEntryPoint
 class DeviceFragment : Fragment(R.layout.fragment_devices) {
 
     private var mApiService: DeviceService? = null
@@ -35,7 +36,7 @@ class DeviceFragment : Fragment(R.layout.fragment_devices) {
         mAdapter = activity?.let { DeviceListAdapter(it, mDevices, R.layout.devices_item) }
         recyclerView.adapter = mAdapter
 
-        mApiService = GithubAPI.client.create(DeviceService::class.java)
+        //mApiService = GithubAPI.client.create(DeviceService::class.java)
         progressBar?.isIndeterminate()
         progressBar?.visibility = View.VISIBLE
         fetchDevicesList()

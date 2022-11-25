@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.elevation.SurfaceColors
+import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.ActivityMainBinding
 import dev.danascape.stormci.ui.fragments.DeviceFragment
@@ -15,6 +16,7 @@ import dev.danascape.stormci.ui.fragments.HomeFragment
 import dev.danascape.stormci.ui.fragments.TeamFragment
 import dev.danascape.stormci.util.NetworkUtils.isOnline
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 

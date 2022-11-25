@@ -1,33 +1,26 @@
 package dev.danascape.stormci.ui.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.provider.Settings.Global
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adapters.team.TeamListAdapter
-import dev.danascape.stormci.api.GithubAPI
 import dev.danascape.stormci.api.team.TeamService
 import dev.danascape.stormci.databinding.FragmentTeamBinding
 import dev.danascape.stormci.models.team.Team
-import dev.danascape.stormci.models.team.TeamList
-import dev.danascape.stormci.ui.fragments.team.CoreTeamFragment
-import dev.danascape.stormci.ui.fragments.team.MaintainerFragment
 import dev.danascape.stormci.util.Constants.Companion.TAG
-import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.awaitResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class TeamFragment : Fragment(R.layout.fragment_team) {
     private var _binding: FragmentTeamBinding? = null
     private val binding
@@ -62,7 +55,7 @@ class TeamFragment : Fragment(R.layout.fragment_team) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mApiService = GithubAPI.client.create(TeamService::class.java)
+        //mApiService = GithubAPI.client.create(TeamService::class.java)
 
         fetchCoreTeamList()
         fetchMaintainerList()

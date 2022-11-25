@@ -1,48 +1,72 @@
 package dev.danascape.stormci.adapters.ci
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import dev.danascape.stormci.R
+import dev.danascape.stormci.databinding.BuildHistoryItemBinding
 import dev.danascape.stormci.models.ci.BuildHistory
-import java.lang.Exception
+import java.util.concurrent.TimeUnit
 
-class BuildHistoryAdapter(private val context: Context, private val mBuildHistory: MutableList<BuildHistory>, private val mRowLayout: Int) : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistoryHolder>() {
+class BuildHistoryAdapter(
+) : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistoryHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildHistoryHolder {
-        val view = LayoutInflater.from(parent.context).inflate(mRowLayout, parent, false)
-        return BuildHistoryHolder(view)
+    inner class BuildHistoryHolder(val binding: BuildHistoryItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        @SuppressLint("SetTextI18n")
+        fun bind(buildHistory: BuildHistory, position: Int) {
+            fun timeTaken(): String {
+                val totalSecondsTaken = buildHistory.finished - buildHistory.started
+                val minutesTaken = TimeUnit.SECONDS.toMinutes(totalSecondsTaken.toLong())
+                val secondsTaken =
+                    TimeUnit.SECONDS.toSeconds(totalSecondsTaken.toLong()) - (TimeUnit.MINUTES.toSeconds(
+                        minutesTaken
+                    ))
+                return "Build Took: $minutesTaken and $secondsTaken"
+            }
+            try {
+                binding.tvbuildNumber.text = "${position + 1}"
+                binding.tvName.text = "Name: ${buildHistory.params?.device ?: "Not Found"}"
+                binding.tvBranch.text = "Branch: ${buildHistory.params?.branch ?: "Not Found"}"
+                binding.tvAuthor.text = "Triggered By: ${buildHistory.author_name}"
+                binding.tvStatus.text = "Build Status: ${buildHistory.status}"
+                binding.tvBuildTime.text = timeTaken()
+
+            } catch (e: Exception) {
+            }
+
+
+        }
     }
 
-    @SuppressLint("SetTextI18n")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildHistoryHolder {
+        val binding =
+            BuildHistoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BuildHistoryHolder(binding)
+    }
+
     override fun onBindViewHolder(holder: BuildHistoryHolder, position: Int) {
-        try{
-            holder.buildNumber.text = "${position + 1}"
-            holder.name.text = "Name: ${mBuildHistory[position].params!!.device!!}"
-            holder.branch.text = "Branch: ${mBuildHistory[position].params!!.branch!!}"
-            holder.author.text = "Triggered by ${mBuildHistory[position]!!.author_name}"
-            holder.buildTime.text = "Build took: ${mBuildHistory[position].finished - mBuildHistory[position].started} seconds"
-            holder.status.text = "Status: ${mBuildHistory[position].status}"
-        }
-        catch (e:Exception){
-            
-        }
+        holder.bind(differ.currentList[position], position)
     }
 
     override fun getItemCount(): Int {
-        return mBuildHistory.size
+        return differ.currentList.size
     }
 
-    class BuildHistoryHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val buildNumber: TextView = itemView.findViewById<View>(R.id.tvbuildNumber) as TextView
-        val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
-        val branch: TextView = itemView.findViewById<View>(R.id.tvBranch) as TextView
-        val author: TextView = itemView.findViewById<View>(R.id.tvAuthor) as TextView
-        val buildTime: TextView = itemView.findViewById<View>(R.id.tvBuildTime) as TextView
-        val status: TextView = itemView.findViewById<View>(R.id.tvStatus) as TextView
+    private val diffutilCallback = object : DiffUtil.ItemCallback<BuildHistory>() {
+        override fun areItemsTheSame(oldItem: BuildHistory, newItem: BuildHistory): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: BuildHistory, newItem: BuildHistory): Boolean {
+            return oldItem == newItem
+        }
+
     }
+
+    val differ = AsyncListDiffer(this, diffutilCallback)
+
 }
