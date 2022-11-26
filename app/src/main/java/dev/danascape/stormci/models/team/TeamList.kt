@@ -1,5 +1,5 @@
 package dev.danascape.stormci.models.team
 
-class TeamList {
+data class TeamList(
     val members: List<Team>? = null
-}
+)

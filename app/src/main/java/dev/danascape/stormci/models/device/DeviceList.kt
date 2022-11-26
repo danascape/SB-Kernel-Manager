@@ -1,5 +1,5 @@
 package dev.danascape.stormci.models.device
 
-class DeviceList {
+class DeviceList(
     val devices: List<Device>? = null
-}
+)

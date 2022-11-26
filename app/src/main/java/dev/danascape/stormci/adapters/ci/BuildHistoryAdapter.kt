@@ -10,8 +10,7 @@ import dev.danascape.stormci.databinding.BuildHistoryItemBinding
 import dev.danascape.stormci.models.ci.BuildHistory
 import java.util.concurrent.TimeUnit
 
-class BuildHistoryAdapter(
-) : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistoryHolder>() {
+class BuildHistoryAdapter : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistoryHolder>() {
 
     inner class BuildHistoryHolder(val binding: BuildHistoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -22,9 +21,9 @@ class BuildHistoryAdapter(
                 val totalSecondsTaken = buildHistory.finished - buildHistory.started
                 val minutesTaken = TimeUnit.SECONDS.toMinutes(totalSecondsTaken.toLong())
                 val secondsTaken =
-                    TimeUnit.SECONDS.toSeconds(totalSecondsTaken.toLong()) - (TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.SECONDS.toSeconds(totalSecondsTaken.toLong()) - TimeUnit.MINUTES.toSeconds(
                         minutesTaken
-                    ))
+                    )
                 return "Build Took: $minutesTaken and $secondsTaken"
             }
             try {

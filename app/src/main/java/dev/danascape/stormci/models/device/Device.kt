@@ -1,8 +1,8 @@
 package dev.danascape.stormci.models.device
 
-class Device {
-    val name: String? = null
-    val image: String? = null
-    val maintainer: String? = null
+data class Device(
+    val name: String? = null,
+    val image: String? = null,
+    val maintainer: String? = null,
     val link: String? = null
-}
+)

@@ -10,4 +10,5 @@ interface TeamService {
 
     @GET("team/maintainers.json")
     suspend fun fetchMaintainer(): Response<TeamList>
+
 }

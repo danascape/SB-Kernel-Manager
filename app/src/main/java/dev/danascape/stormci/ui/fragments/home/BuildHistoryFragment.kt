@@ -25,7 +25,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         val layoutManager = LinearLayoutManager(context)
         mAdapter = BuildHistoryAdapter()
         binding.rvDevices.layoutManager = layoutManager
-
+        binding.rvDevices.adapter = mAdapter
         viewModel.buildHistory.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkResponse.Error -> {
@@ -34,7 +34,6 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
                 is NetworkResponse.Loading -> {}
                 is NetworkResponse.Success -> {
                     mAdapter?.differ?.submitList(it.data)
-                    binding.rvDevices.adapter = mAdapter
                 }
             }
         }

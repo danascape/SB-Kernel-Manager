@@ -1,41 +1,49 @@
 package dev.danascape.stormci.adapters.team
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import dev.danascape.stormci.R
+import dev.danascape.stormci.databinding.TeamItemBinding
 import dev.danascape.stormci.models.team.Team
 
-class TeamListAdapter(
-    private val context: Context,
-    private val mTeam: MutableList<Team>
-) : RecyclerView.Adapter<TeamListAdapter.TeamViewHolder>() {
+class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.TeamViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-        return TeamViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.team_item, parent, false)
-        )
+        val binding = TeamItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TeamViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
-        holder.positionNumber.text = "Member: ${position + 1}"
-        holder.name.text = mTeam[position].name
-        holder.title.text = mTeam[position].title
+        holder.bind(differ.currentList[position], position)
     }
 
     override fun getItemCount(): Int {
-        return mTeam.size
+        return differ.currentList.size
     }
 
-    class TeamViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val positionNumber: TextView =
-            itemView.findViewById<View>(R.id.tvPositionNumber) as TextView
-        val name: TextView = itemView.findViewById<View>(R.id.tvName) as TextView
-        val title: TextView = itemView.findViewById<View>(R.id.tvTitle) as TextView
+    class TeamViewHolder(val binding: TeamItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
+        fun bind(team: Team, position: Int) {
+            binding.tvPositionNumber.text = "${position + 1}"
+            binding.tvName.text = team.name
+            binding.tvTitle.text = team.title
+        }
     }
+
+    val diffUtilCallback = object : DiffUtil.ItemCallback<Team>() {
+        override fun areItemsTheSame(oldItem: Team, newItem: Team): Boolean {
+            return oldItem.name == newItem.name
+        }
+
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: Team, newItem: Team): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+    val differ = AsyncListDiffer(this, diffUtilCallback)
 }
