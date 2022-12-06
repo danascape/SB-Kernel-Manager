@@ -5,11 +5,12 @@ StormCI is a tracking application for device supported by our software. <br>
 The Application is made for the users to download/track builds for the supported devices.
 
 <p><h2>Tech Stack</h2></p>
-- Kotlin
-- MVVM
-- Coroutines
-- Retrofit
-- Navigation View
+
+* Kotlin
+* MVVM
+* Coroutines
+* Retrofit
+* Navigation View
 
 # License
 ```xml
