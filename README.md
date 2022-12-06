@@ -1,5 +1,16 @@
 <h1 align="center">StormCI</h1>
 
+<p><h2>About</h2></p>
+StormCI is a tracking application for device supported by our software. <br>
+The Application is made for the users to download/track builds for the supported devices.
+
+<p><h2>Tech Stack</h2></p>
+- Kotlin
+- MVVM
+- Coroutines
+- Retrofit
+- Navigation View
+
 # License
 ```xml
 Copyright 2019 danascape (Saalim Quadri)
