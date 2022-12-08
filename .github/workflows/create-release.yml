@@ -18,8 +18,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
           body: |
             Changes in this Release
             - First Change
@@ -34,5 +34,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./StormCIApp.zip
-          asset_name: StormCI-v${{ github.ref }}.zip
+          asset_name: StormCI-v${{ github.run_number }}.zip
           asset_content_type: application/zip
