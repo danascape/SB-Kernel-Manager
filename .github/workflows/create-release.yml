@@ -18,15 +18,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
           body: |
             Changes in this Release
             - First Change
             - Second Change
           draft: false
           prerelease: false
-      - name:
+      - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
@@ -34,5 +34,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./StormCIApp.zip
-          asset_name: StormCI-v${{ github.ref }}.zip
+          asset_name: StormCI-v${{ github.sha }}.zip
           asset_content_type: application/zip
