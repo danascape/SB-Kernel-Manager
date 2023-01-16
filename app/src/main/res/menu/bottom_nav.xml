@@ -16,6 +16,13 @@
         android:title="Devices" />
 
     <item
+        android:id="@+id/BuildFragment"
+        android:icon="@drawable/ic_build"
+        android:iconTint="@color/black"
+        android:menuCategory="secondary"
+        android:title="Build" />
+
+    <item
         android:id="@+id/teamFragment"
         android:icon="@drawable/ic_team"
         android:iconTint="@color/black"

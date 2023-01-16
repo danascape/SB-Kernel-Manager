@@ -1,4 +1,4 @@
-package dev.danascape.stormci.adapters.ci
+package dev.danascape.stormci.adapters.build
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.databinding.BuildHistoryItemBinding
-import dev.danascape.stormci.models.ci.BuildHistory
+import dev.danascape.stormci.models.build.BuildHistory
 import java.util.concurrent.TimeUnit
 
 class BuildHistoryAdapter : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistoryHolder>() {
@@ -24,20 +24,18 @@ class BuildHistoryAdapter : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistor
                     TimeUnit.SECONDS.toSeconds(totalSecondsTaken.toLong()) - TimeUnit.MINUTES.toSeconds(
                         minutesTaken
                     )
-                return "Build Took: $minutesTaken and $secondsTaken"
+                return "Build Took: ${minutesTaken}m ${secondsTaken}s"
             }
             try {
-                binding.tvbuildNumber.text = "${position + 1}"
-                binding.tvName.text = "Name: ${buildHistory.params?.device ?: "Not Found"}"
+                binding.tvbuildNumber.text = "${buildHistory.number}"
+                binding.tvName.text = "Device: ${buildHistory.params?.device ?: "Not Found"}"
                 binding.tvBranch.text = "Branch: ${buildHistory.params?.branch ?: "Not Found"}"
                 binding.tvAuthor.text = "Triggered By: ${buildHistory.author_name}"
-                binding.tvStatus.text = "Build Status: ${buildHistory.status}"
+                binding.tvStatus.text = "Status: ${buildHistory.status}"
                 binding.tvBuildTime.text = timeTaken()
 
             } catch (e: Exception) {
             }
-
-
         }
     }
 

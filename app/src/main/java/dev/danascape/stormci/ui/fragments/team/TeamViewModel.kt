@@ -12,15 +12,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MaintainersViewModel @Inject constructor(private val membersGithubRepository: MembersGithubRepository) :
+class TeamViewModel @Inject constructor(private val membersGithubRepository: MembersGithubRepository) :
     ViewModel() {
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            membersGithubRepository.getTeamMembers()
+            membersGithubRepository.getMembers()
         }
     }
 
-    val teamMembers: LiveData<NetworkResponse<List<Team>>>
-        get() = membersGithubRepository.teamMembers
+    val MemberList: LiveData<NetworkResponse<List<Team>>>
+        get() = membersGithubRepository.Members
+
 }

@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui.fragments
+package dev.danascape.stormci.ui.fragments.device
 
 import android.os.Bundle
 import android.util.Log
@@ -9,20 +9,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
 import dev.danascape.stormci.adapters.device.DeviceListAdapter
+import dev.danascape.stormci.adapters.team.TeamListAdapter
 import dev.danascape.stormci.databinding.FragmentDevicesBinding
 import dev.danascape.stormci.repository.NetworkResponse
 
 @AndroidEntryPoint
 class DeviceFragment : Fragment(R.layout.fragment_devices) {
 
-    private var mAdapter: DeviceListAdapter? = null
     private lateinit var binding: FragmentDevicesBinding
+
+    private var mAdapter: DeviceListAdapter? = null
     private val viewModel: DeviceViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDevicesBinding.bind(view)
-        mAdapter = DeviceListAdapter()
+//        mAdapter = DeviceListAdapter()
+        mAdapter = activity?.let { DeviceListAdapter(it) }
         val layoutManager = LinearLayoutManager(context)
         binding.rvDevices.layoutManager = layoutManager
         binding.rvDevices.adapter = mAdapter

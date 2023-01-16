@@ -3,7 +3,7 @@ package dev.danascape.stormci.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dev.danascape.stormci.api.ci.DroneService
-import dev.danascape.stormci.models.ci.BuildHistory
+import dev.danascape.stormci.models.build.BuildHistory
 import javax.inject.Inject
 
 class DroneRepository @Inject constructor(val droneService: DroneService) {

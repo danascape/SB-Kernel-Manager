@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui.fragments.home
+package dev.danascape.stormci.ui.fragments.build
 
 import android.os.Bundle
 import android.util.Log
@@ -8,20 +8,20 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adapters.ci.BuildHistoryAdapter
-import dev.danascape.stormci.databinding.FragmentBuildHistoryBinding
+import dev.danascape.stormci.adapters.build.BuildHistoryAdapter
+import dev.danascape.stormci.databinding.FragmentBuildBinding
 import dev.danascape.stormci.repository.NetworkResponse
 
 @AndroidEntryPoint
-class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
+class BuildFragment : Fragment(R.layout.fragment_build) {
 
     private var mAdapter: BuildHistoryAdapter? = null
-    private val viewModel: BuildHistoryViewModel by viewModels()
-    private lateinit var binding: FragmentBuildHistoryBinding
+    private val viewModel: BuildViewModel by viewModels()
+    lateinit var binding: FragmentBuildBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentBuildHistoryBinding.bind(view)
+        binding = FragmentBuildBinding.bind(view)
         val layoutManager = LinearLayoutManager(context)
         mAdapter = BuildHistoryAdapter()
         binding.rvDevices.layoutManager = layoutManager
@@ -29,7 +29,7 @@ class BuildHistoryFragment : Fragment(R.layout.fragment_build_history) {
         viewModel.buildHistory.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkResponse.Error -> {
-                    Log.d("BuildHistoryFragment", it.message.toString())
+                    Log.d("BuildFragment", it.message.toString())
                 }
                 is NetworkResponse.Loading -> {}
                 is NetworkResponse.Success -> {

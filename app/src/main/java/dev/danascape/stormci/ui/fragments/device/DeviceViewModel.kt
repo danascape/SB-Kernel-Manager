@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui.fragments
+package dev.danascape.stormci.ui.fragments.device
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

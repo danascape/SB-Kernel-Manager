@@ -6,50 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.HomeFragment">
 
-    <TextView
-        android:id="@+id/tvMainLogo"
-        android:layout_width="218dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
-        android:text="StormBreaker CI"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toStartOf="@+id/tvLogo"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvMainLogo"-->
+    <!--        android:layout_width="218dp"-->
+    <!--        android:layout_height="35dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:text="StormBreaker CI"-->
+    <!--        android:textSize="26sp"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/tvLogo"-->
+    <!--        app:layout_constraintHorizontal_bias="0.24"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/tvLogo"
-        android:layout_width="44dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Logo"
-        app:layout_constraintBottom_toTopOf="@+id/flDevice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvLogo"-->
+    <!--        android:layout_width="44dp"-->
+    <!--        android:layout_height="34dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:text="Logo"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/flDevice"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.096" />-->
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/flDevice"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="8dp"
+        app:cardBackgroundColor="#030303"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMainLogo">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvDeviceName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="160dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
             android:text="Device Name" />
 
         <TextView
@@ -82,29 +84,18 @@
             android:text="Device Does not support StormBreaker Kernel" />
     </androidx.cardview.widget.CardView>
 
-
-    <TextView
-        android:id="@+id/tvDashboard"
-        android:layout_width="112dp"
-        android:layout_height="31dp"
-        android:text="Dashboard"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnHistory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flDevice"
-        app:layout_constraintVertical_bias="0.074" />
-
-    <Button
-        android:id="@+id/btnHistory"
-        android:layout_width="289dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="44dp"
-        android:text="History"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="482dp"-->
+<!--        android:layout_marginLeft="8dp"-->
+<!--        android:layout_marginRight="8dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        app:cardBackgroundColor="#030303"-->
+<!--        app:cardCornerRadius="18dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/flDevice"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

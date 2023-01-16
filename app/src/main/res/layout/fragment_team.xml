@@ -1,86 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.TeamFragment">
+    tools:context=".ui.fragments.team.TeamFragment">
 
     <TextView
-        android:id="@+id/tvTeam"
-        android:layout_width="247dp"
-        android:layout_height="53dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="43dp"
-        android:layout_marginTop="25dp"
-        android:text="Meet Our Team!"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/tvTeamHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Team Overview"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="335dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="300dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="120dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View all"
-            android:id="@+id/btnCoreTeam"
-            android:layout_marginLeft="300dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Core Members"
-            android:textSize="20sp" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTeamHeading">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCoreTeam"
+            android:id="@+id/rvTeam"
             android:layout_width="match_parent"
-            android:layout_marginTop="35dp"
             android:layout_height="match_parent" />
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="335dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="450dp"
-        android:layout_marginBottom="10dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="120dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View all"
-            android:id="@+id/btnMaintainer"
-            android:layout_marginLeft="300dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Maintainers"
-            android:textSize="20sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMaintainer"
-            android:layout_width="match_parent"
-            android:layout_marginTop="35dp"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/team_item"
-            />
-    </FrameLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
