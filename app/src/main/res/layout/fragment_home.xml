@@ -38,64 +38,69 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginRight="8dp"
-        app:cardBackgroundColor="#030303"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvDeviceName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="8dp"
-            android:text="Device Name" />
-
-        <TextView
-            android:id="@+id/tvKernel"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="524dp"
-            android:text="Kernel Version" />
-
-        <ImageView
-            android:id="@+id/ivDevice"
-            android:layout_width="116dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            app:srcCompat="@drawable/ic_devices" />
-
-        <TextView
-            android:id="@+id/tvKernelSupport"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="56dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="524dp"
-            android:text="Device Does not support StormBreaker Kernel" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivDevice"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/ic_devices"
+                app:tint="@android:color/holo_blue_dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvDeviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Device Name" />
+
+                <TextView
+                    android:id="@+id/tvKernel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Kernel Version" />
+
+                <TextView
+                    android:id="@+id/tvKernelSupport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Device Does not support StormBreaker Kernel"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="482dp"-->
-<!--        android:layout_marginLeft="8dp"-->
-<!--        android:layout_marginRight="8dp"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        app:cardBackgroundColor="#030303"-->
-<!--        app:cardCornerRadius="18dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/flDevice"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="482dp"-->
+    <!--        android:layout_marginLeft="8dp"-->
+    <!--        android:layout_marginRight="8dp"-->
+    <!--        android:layout_marginBottom="16dp"-->
+    <!--        app:cardBackgroundColor="#030303"-->
+    <!--        app:cardCornerRadius="18dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/flDevice"-->
+    <!--        app:layout_constraintVertical_bias="1.0" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
