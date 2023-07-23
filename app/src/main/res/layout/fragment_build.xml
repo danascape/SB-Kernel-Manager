@@ -7,178 +7,59 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.build.BuildFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Overview"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="10dp"
-        app:cardBackgroundColor="#030303"
-        app:cardCornerRadius="20dp"
+        android:layout_height="84dp"
+        android:background="#D9D9D9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
-            android:layout_marginTop="21dp"
-            android:text="69"
-            android:textColor="#FFFFFF"
-            android:textSize="35dp"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="17dp"
+            android:text="stormbreaker.github"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tasks done this week"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="31dp"
-            android:layout_marginLeft="100dp"
-            android:textSize="20sp" />
+    </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="165dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginRight="10dp"
-        app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="#030303"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+    <TextView
+        android:id="@+id/tvExec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="24dp"
+        android:text="Executions"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.984"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.0">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="In-Progress"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="64dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginBottom="8dp"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="4dp"
-            android:text="2"
-            android:textColor="#FFFFFF"
-            android:textSize="26dp" />
-
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="165dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="17dp"
-        app:cardBackgroundColor="#030303"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Devices"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="64dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="122dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="4dp"
-            android:text="5"
-            android:textColor="#FFFFFF"
-            android:textSize="26dp" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="583dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:background="#131715"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/tvExec">
 
-        <androidx.cardview.widget.CardView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDevices"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardCornerRadius="30dp"
-            app:cardBackgroundColor="#131715"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="15sp"
-                android:text="Executions"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
-
-<!--            <Button-->
-<!--                android:id="@+id/btnHistory"-->
-<!--                android:layout_width="289dp"-->
-<!--                android:layout_height="72dp"-->
-<!--                android:layout_marginBottom="44dp"-->
-<!--                android:text="History" />-->
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDevices"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="33dp"/>
-
-        </androidx.cardview.widget.CardView>
-
+            android:layout_marginTop="33dp" />
     </FrameLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

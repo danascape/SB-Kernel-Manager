@@ -28,9 +28,8 @@ class BuildHistoryAdapter : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistor
             }
             try {
                 binding.tvbuildNumber.text = "${buildHistory.number}"
-                binding.tvName.text = "Device: ${buildHistory.params?.device ?: "Not Found"}"
-                binding.tvBranch.text = "Branch: ${buildHistory.params?.branch ?: "Not Found"}"
-                binding.tvAuthor.text = "Triggered By: ${buildHistory.author_name}"
+                binding.tvName.text = "linux-${buildHistory.params?.device ?: "Not Found"}"
+                binding.tvBranch.text = "tag:${buildHistory.params?.branch ?: "Not Found"}"
                 binding.tvStatus.text = "Status: ${buildHistory.status}"
                 binding.tvBuildTime.text = timeTaken()
 
