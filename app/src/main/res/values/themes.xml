@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">#030303</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#131715</item>
+        <item name="android:fontFamily">@font/poppins_light</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

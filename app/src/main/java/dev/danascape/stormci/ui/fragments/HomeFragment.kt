@@ -30,6 +30,10 @@ class HomeFragment : Fragment() {
 
         val activity: MainActivity? = activity as MainActivity?
 
+        binding.tvLogo.setOnClickListener {
+            Toast.makeText(context, "You pressed to view info", Toast.LENGTH_SHORT).show()
+        }
+
         val kernelVersion = getDeviceProperty("uname -r")
         binding.tvKernel.text = kernelVersion
 
@@ -37,6 +41,7 @@ class HomeFragment : Fragment() {
             binding.tvKernelSupport.text = "Device is supported"
             Toast.makeText(context, "Device is supported", Toast.LENGTH_SHORT).show()
         } else {
+            binding.tvKernelSupport.text = "Device is not supported"
             Toast.makeText(context, "Device is not supported", Toast.LENGTH_SHORT).show()
         }
 

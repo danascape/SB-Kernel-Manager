@@ -4,45 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".ui.fragments.HomeFragment">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvMainLogo"-->
-    <!--        android:layout_width="218dp"-->
-    <!--        android:layout_height="35dp"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:text="StormBreaker CI"-->
-    <!--        android:textSize="26sp"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/tvLogo"-->
-    <!--        app:layout_constraintHorizontal_bias="0.24"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvLogo"-->
-    <!--        android:layout_width="44dp"-->
-    <!--        android:layout_height="34dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:layout_marginEnd="16dp"-->
-    <!--        android:text="Logo"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/flDevice"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.096" />-->
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/flDevice"
+    <RelativeLayout
+        android:id="@+id/rlMain"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginRight="8dp"
-        app:cardBackgroundColor="#030303"
-        app:cardCornerRadius="20dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvMainLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="StormBreaker CI"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/tvMainLogo"
+            android:background="@drawable/ic_info" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlMain">
+
+        <ImageView
+            android:id="@+id/ivDevice"
+            android:layout_width="90dp"
+            android:layout_height="130dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:srcCompat="@drawable/device" />
 
         <TextView
             android:id="@+id/tvDeviceName"
@@ -52,50 +67,31 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="8dp"
-            android:text="Device Name" />
+            android:text="Device Name"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvKernel"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="524dp"
-            android:text="Kernel Version" />
-
-        <ImageView
-            android:id="@+id/ivDevice"
-            android:layout_width="116dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            app:srcCompat="@drawable/ic_devices" />
+            android:text="Kernel Version"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvKernelSupport"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="75dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="524dp"
-            android:text="Device Does not support StormBreaker Kernel" />
-    </androidx.cardview.widget.CardView>
+            android:text="Loading..."
+            android:textColor="@color/white" />
 
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="482dp"-->
-<!--        android:layout_marginLeft="8dp"-->
-<!--        android:layout_marginRight="8dp"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        app:cardBackgroundColor="#030303"-->
-<!--        app:cardCornerRadius="18dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/flDevice"-->
-<!--        app:layout_constraintVertical_bias="1.0" />-->
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
