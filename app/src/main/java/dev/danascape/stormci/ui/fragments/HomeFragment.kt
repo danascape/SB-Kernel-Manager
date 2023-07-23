@@ -29,12 +29,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val activity: MainActivity? = activity as MainActivity?
-        val loginState: Int = activity!!.checkLoggedInState()
-        if (loginState == 0) {
-            Toast.makeText(context, "Welcome Guest!", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(context, "Successfully Logged In!", Toast.LENGTH_SHORT).show()
-        }
 
         val kernelVersion = getDeviceProperty("uname -r")
         binding.tvKernel.text = kernelVersion

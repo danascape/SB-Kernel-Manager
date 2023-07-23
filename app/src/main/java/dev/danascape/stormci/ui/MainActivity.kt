@@ -31,13 +31,4 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.bottomNav.setupWithNavController(navController)
     }
-
-    fun checkLoggedInState(): Int {
-        val auth = intent.getStringExtra("AUTH_USER")
-        if(auth == null) { // not logged in
-            return 1
-        } else {
-            return 0
-        }
-    }
 }
