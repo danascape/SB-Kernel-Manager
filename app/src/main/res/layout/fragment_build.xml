@@ -7,28 +7,38 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.build.BuildFragment">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvMain"
         android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:background="#D9D9D9"
+        android:layout_height="wrap_content"
+        android:background="#C7E7FF"
+        app:cardCornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="17dp"
-            android:text="stormbreaker.github"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:background="#C7E7FF">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tvDeviceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="stormbreaker.github"
+                android:textSize="26sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.763" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/tvExec"
@@ -37,12 +47,12 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="24dp"
         android:text="Executions"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/cvMain" />
 
     <FrameLayout
         android:id="@+id/frameLayout"

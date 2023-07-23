@@ -7,48 +7,58 @@
     android:background="#000000"
     tools:context=".ui.fragments.HomeFragment">
 
-    <RelativeLayout
-        android:id="@+id/rlMain"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#C7E7FF"
+        app:cardCornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvMainLogo"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="StormBreaker CI"
-            android:textColor="@color/white"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
+            android:background="#C7E7FF">
 
-        <TextView
-            android:id="@+id/tvLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toEndOf="@+id/tvMainLogo"
-            android:background="@drawable/ic_info" />
+            <TextView
+                android:id="@+id/tvMainLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="StormBreaker CI"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="26sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.763" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tvLogo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/ic_info"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.107" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rlMain">
+        app:layout_constraintTop_toBottomOf="@+id/cvMain">
 
         <ImageView
             android:id="@+id/ivDevice"

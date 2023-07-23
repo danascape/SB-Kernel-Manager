@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#131715</item>
+        <item name="android:statusBarColor">#C7E7FF</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
 </resources>
