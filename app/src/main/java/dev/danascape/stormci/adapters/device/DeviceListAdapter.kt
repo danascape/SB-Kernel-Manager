@@ -35,11 +35,14 @@ class DeviceListAdapter(val context: Context) : RecyclerView.Adapter<DeviceListA
 
     class DeviceViewHolder(val binding: DevicesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(device: Device, context: Context) {
             val intentDownload = Intent(Intent.ACTION_VIEW, Uri.parse(device.link))
 
             binding.tvName.text = device.name
-            binding.tvMaintainer.text = device.maintainer
+            binding.tvMaintainer.text = "Maintainer: ${device.maintainer}"
+            binding.tvDate.text = "Release Date: ${device.date}"
+            binding.tvVersion.text = "Latest Version: ${device.version}"
             if (!device.image.isNullOrBlank()) {
                 Picasso.get()
                     .load(device.image)
