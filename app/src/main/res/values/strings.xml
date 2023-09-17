@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">StormCI</string>
+    <string name="maintainer">Maintainer</string>
+    <string name="release_date">Release Date</string>
+    <string name="latest_version">Latest Version</string>
 </resources>
