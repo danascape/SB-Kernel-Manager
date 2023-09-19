@@ -8,7 +8,11 @@
         android:id="@+id/homeFragment"
         android:name="dev.danascape.stormci.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_batteryMonitorFragment"
+            app:destination="@id/batteryMonitorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/deviceFragment"
         android:name="dev.danascape.stormci.ui.fragments.device.DeviceFragment"
@@ -24,4 +28,9 @@
         android:name="dev.danascape.stormci.ui.fragments.team.TeamFragment"
         android:label="fragment_team"
         tools:layout="@layout/fragment_team" />
+    <fragment
+        android:id="@+id/batteryMonitorFragment"
+        android:name="dev.danascape.stormci.ui.fragments.battery.BatteryMonitorFragment"
+        android:label="fragment_battery_monitor"
+        tools:layout="@layout/fragment_battery_monitor" />
 </navigation>
