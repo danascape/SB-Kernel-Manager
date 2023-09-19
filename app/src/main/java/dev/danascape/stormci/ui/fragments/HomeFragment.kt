@@ -23,12 +23,20 @@ class HomeFragment : Fragment() {
         get() = _binding!!
 
     private lateinit var batteryManager: BatteryManager
+    val list = arrayListOf<Long>()
     val handler = Handler()
     private val runnable: Runnable = object : Runnable {
         override fun run() {
             setUpBatteryMonitor()
+            currentList = list
             handler.postDelayed(this, 60000)
         }
+    }
+
+    private var current = 0L
+
+    companion object {
+        var currentList = ArrayList<Long>()
     }
 
     override fun onCreateView(
@@ -76,7 +84,8 @@ class HomeFragment : Fragment() {
         } else {
             binding.chargingStatus.text = context?.getString(R.string.not_charging)
         }
-        binding.currentStatus.text = "Current: " + batteryManager.getBatteryCurrent() + " mA"
-
+        current = batteryManager.getBatteryCurrent()
+        binding.currentStatus.text = "Current: $current mA"
+        list.add(current)
     }
 }
