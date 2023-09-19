@@ -3,4 +3,8 @@
     <string name="maintainer">Maintainer</string>
     <string name="release_date">Release Date</string>
     <string name="latest_version">Latest Version</string>
+    <string name="charging">Charging</string>
+    <string name="not_charging">Not Charging</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
