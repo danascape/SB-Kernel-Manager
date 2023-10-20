@@ -2,32 +2,32 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvDeviceView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    android:id="@+id/cvDeviceView"
-    android:layout_marginLeft="10dp">
+    android:layout_marginLeft="@dimens/ten_dp"
+    android:layout_marginTop="@dimens/ten_dp"
+    android:layout_marginRight="@dimens/ten_dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_centerVertical="true"
             android:id="@+id/llImg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgProfile"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimens/eighty_dp"
+                android:layout_height="@dimens/eighty_dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginStart="@dimens/six_dp"
+                android:layout_marginTop="@dimens/zero_dp"
+                android:layout_marginBottom="@dimens/one_dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.181"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,15 +36,16 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_toRightOf="@id/llImg"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/llImg"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="@dimens/twenty_sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imgProfile"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,27 +54,27 @@
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                app:layout_constraintTop_toTopOf="@+id/tvName"
-                app:layout_constraintStart_toEndOf="@+id/imgProfile"/>
+                android:textSize="@dimens/fifteen_sp"
+                app:layout_constraintStart_toEndOf="@+id/imgProfile"
+                app:layout_constraintTop_toTopOf="@+id/tvName" />
 
             <TextView
                 android:id="@+id/tvVersion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="@dimens/fifteen_sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvDate"
-                app:layout_constraintStart_toEndOf="@+id/imgProfile"/>
+                app:layout_constraintStart_toEndOf="@+id/imgProfile"
+                app:layout_constraintTop_toTopOf="@+id/tvDate" />
 
             <TextView
                 android:id="@+id/tvMaintainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                app:layout_constraintTop_toTopOf="@+id/tvVersion"
+                android:textSize="@dimens/fifteen_sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgProfile"/>
+                app:layout_constraintStart_toEndOf="@+id/imgProfile"
+                app:layout_constraintTop_toTopOf="@+id/tvVersion" />
 
 
         </LinearLayout>

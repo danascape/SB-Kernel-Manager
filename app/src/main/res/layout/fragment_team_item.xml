@@ -7,10 +7,10 @@
     app:layout_constraintGuide_percent=".15"
     app:layout_constraintHeight_percent=".15"
     app:layout_constraintWidth_percent=".85"
-    android:layout_marginTop="15dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
-    app:cardCornerRadius="30dp">
+    android:layout_marginTop="@dimens/fifteen_dp"
+    android:layout_marginRight="@dimens/ten_dp"
+    android:layout_marginLeft="@dimens/ten_dp"
+    app:cardCornerRadius="@dimens/thirty_dp">
 `
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,11 +21,11 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgProfile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
+            android:layout_width="@dimens/eighty_dp"
+            android:layout_height="@dimens/eighty_dp"
+            android:layout_marginStart="@dimens/ten_dp"
+            android:layout_marginTop="@dimens/three_dp"
+            android:layout_marginBottom="@dimens/three_dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,32 +34,32 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="@dimens/thirty_five_dp"
             android:layout_gravity="left"
             android:fontFamily="@font/poppins_medium"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimens/twenty_dp"
+            android:layout_marginTop="@dimens/five_dp"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="@dimens/twenty_two_sp"
             app:layout_constraintStart_toEndOf="@+id/imgProfile"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
+            android:layout_height="@dimens/thirty_dp"
+            android:layout_marginStart="@dimens/twenty_dp"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="@dimens/fourteen_sp"
             app:layout_constraintStart_toEndOf="@+id/imgProfile"
             app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <ImageButton
             android:id="@+id/tvGithub"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="@dimens/twenty_dp"
+            android:layout_height="@dimens/thirty_dp"
+            android:layout_marginStart="@dimens/twenty_dp"
             android:src="@drawable/ic_github"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgProfile"
@@ -68,8 +68,8 @@
 
         <ImageButton
             android:id="@+id/tvLinkedin"
-            android:layout_width="20dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimens/twenty_dp"
+            android:layout_height="@dimens/thirty_dp"
             android:layout_marginEnd="128dp"
             android:src="@drawable/ic_linkedin"
             app:layout_constraintBottom_toBottomOf="parent"

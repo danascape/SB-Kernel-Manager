@@ -1,0 +1,51 @@
+<resources>
+    <!--    to add Default values to layout we are making....we create these type of dimens and add these parameter at top of activity main so it applies to all-->
+    <dimen name="main_Screen_main_layout_padding">5dp</dimen>
+    <dimen name="default_Button_textSize">22sp</dimen>
+    <dimen name="zero_dp">0dp</dimen>
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="two_dp">2dp</dimen>
+    <dimen name="three_dp">3dp</dimen>
+    <dimen name="five_dp">5dp</dimen>
+    <dimen name="six_dp">6dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="fifteen_dp">15dp</dimen>
+    <dimen name="sixteen_dp">16dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="twenty_four_dp">24dp</dimen>
+    <dimen name="thirty_dp">30dp</dimen>
+    <dimen name="thirty_three_dp">33dp</dimen>
+    <dimen name="thirty_five_dp">35dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="fifty_dp">50dp</dimen>
+    <dimen name="eighty_dp">80dp</dimen>
+    <dimen name="hundred_dp">100dp</dimen>
+    <dimen name="hundred_sixty_dp">160dp</dimen>
+    <dimen name="two_hundred_dp">200dp</dimen>
+
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="twenty_five_dp">25dp</dimen>
+    <dimen name="forty_eight_dp">48dp</dimen>
+    <dimen name="fifty_six_dp">56dp</dimen>
+    <dimen name="fifty_seven_dp">57dp</dimen>
+    <dimen name="sixty_dp">60dp</dimen>
+    <dimen name="seventy_dp">70dp</dimen>
+    <dimen name="hundred_fifty_dp">150dp</dimen>
+    <dimen name="two_hundred_fifty_six_dp">256dp</dimen>
+
+    <!--text size-->
+    <dimen name="two_sp">2sp</dimen>
+    <dimen name="fourteen_sp">14sp</dimen>
+    <dimen name="fifteen_sp">15sp</dimen>
+    <dimen name="sixteen_sp">16sp</dimen>
+    <dimen name="eighteen_sp">18sp</dimen>
+    <dimen name="twenty_sp">20sp</dimen>
+    <dimen name="twenty_two_sp">22sp</dimen>
+    <dimen name="twenty_four_sp">24sp</dimen>
+    <dimen name="twenty_five_sp">25sp</dimen>
+    <dimen name="twenty_six_sp">26sp</dimen>
+    <dimen name="thirty_five_sp">35sp</dimen>
+    <dimen name="thirty_sp">30sp</dimen>
+
+</resources>

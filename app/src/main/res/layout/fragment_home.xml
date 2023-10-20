@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#C7E7FF"
-        app:cardCornerRadius="0dp"
+        app:cardCornerRadius="@dimens/zero_dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,12 +26,12 @@
                 android:id="@+id/tvMainLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimens/twenty_dp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="StormBreaker CI"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="26sp"
+                android:layout_marginTop="@dimens/forty_dp"
+                android:layout_marginBottom="@dimens/ten_dp"
+                android:textSize="@dimens/twenty_six_sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,9 +39,9 @@
 
             <TextView
                 android:id="@+id/tvLogo"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="4dp"
+                android:layout_width="@dimens/thirty_five_dp"
+                android:layout_height="@dimens/thirty_five_dp"
+                android:layout_marginEnd="@dimens/four_dp"
                 android:background="@drawable/ic_info"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimens/two_hundred_dp"
         android:background="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvMain">
@@ -64,18 +64,18 @@
             android:id="@+id/ivDevice"
             android:layout_width="90dp"
             android:layout_height="130dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="@dimens/twenty_dp"
+            android:layout_marginTop="@dimens/twenty_dp"
+            android:layout_marginBottom="@dimens/twenty_dp"
             app:srcCompat="@drawable/device" />
 
         <TextView
             android:id="@+id/tvDeviceName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimens/hundred_sixty_dp"
+            android:layout_marginTop="@dimens/twenty_dp"
+            android:layout_marginRight="@dimens/twenty_dp"
             android:layout_marginBottom="8dp"
             android:text="Device Name"
             android:textColor="@color/white" />
@@ -84,9 +84,9 @@
             android:id="@+id/tvKernel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="@dimens/hundred_sixty_dp"
+            android:layout_marginTop="@dimens/fifty_dp"
+            android:layout_marginRight="@dimens/twenty_dp"
             android:layout_marginBottom="524dp"
             android:text="Kernel Version"
             android:textColor="@color/white" />
@@ -95,9 +95,9 @@
             android:id="@+id/tvKernelSupport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="@dimens/hundred_sixty_dp"
             android:layout_marginTop="75dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimens/twenty_dp"
             android:layout_marginBottom="524dp"
             android:text="Loading..."
             android:textColor="@color/white" />
