@@ -1,4 +1,4 @@
-<h1 align="center">StormCI</h1>
+<h1 align="center">SB Kernel Manager</h1>
 
 <p><h2>About</h2></p>
 StormCI is a tracking application for device supported by our software. <br>

@@ -6,6 +6,6 @@ class Constants {
         const val GITHUB_URL =
             "https://raw.githubusercontent.com/stormbreaker-project/official_devices/master/"
         const val KERNEL_NAME = "StormBreaker"
-        const val TAG = "StormCI"
+        const val LOG_TAG = "StormCI"
     }
 }

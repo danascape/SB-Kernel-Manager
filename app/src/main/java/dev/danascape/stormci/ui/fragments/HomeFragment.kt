@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.databinding.FragmentHomeBinding
-import dev.danascape.stormci.ui.MainActivity
+import dev.danascape.stormci.ui.activities.MainActivity
 import dev.danascape.stormci.util.Constants
 import dev.danascape.stormci.util.DeviceUtils.getDeviceProperty
 import java.util.*

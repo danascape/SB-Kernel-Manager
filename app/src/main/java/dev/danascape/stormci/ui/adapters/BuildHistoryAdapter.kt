@@ -1,4 +1,4 @@
-package dev.danascape.stormci.adapters.build
+package dev.danascape.stormci.ui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.danascape.stormci.databinding.BuildHistoryItemBinding
-import dev.danascape.stormci.models.build.BuildHistory
+import dev.danascape.stormci.models.BuildHistory
 import java.util.concurrent.TimeUnit
 
 class BuildHistoryAdapter : RecyclerView.Adapter<BuildHistoryAdapter.BuildHistoryHolder>() {

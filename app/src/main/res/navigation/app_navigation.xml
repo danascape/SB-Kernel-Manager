@@ -11,17 +11,17 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/deviceFragment"
-        android:name="dev.danascape.stormci.ui.fragments.device.DeviceFragment"
+        android:name="dev.danascape.stormci.ui.fragments.DeviceFragment"
         android:label="fragment_devices"
         tools:layout="@layout/fragment_devices" />
     <fragment
         android:id="@+id/BuildFragment"
-        android:name="dev.danascape.stormci.ui.fragments.build.BuildFragment"
+        android:name="dev.danascape.stormci.ui.fragments.BuildFragment"
         android:label="fragment_build"
         tools:layout="@layout/fragment_build" />
      <fragment
         android:id="@+id/teamFragment"
-        android:name="dev.danascape.stormci.ui.fragments.team.TeamFragment"
+        android:name="dev.danascape.stormci.ui.fragments.TeamFragment"
         android:label="fragment_team"
         tools:layout="@layout/fragment_team" />
 </navigation>

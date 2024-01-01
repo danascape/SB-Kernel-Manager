@@ -1,4 +1,4 @@
-package dev.danascape.stormci.models.build
+package dev.danascape.stormci.models
 
 data class BuildHistory(
     val id: Int,

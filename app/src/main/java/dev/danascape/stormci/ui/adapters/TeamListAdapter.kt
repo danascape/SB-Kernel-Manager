@@ -1,6 +1,5 @@
-package dev.danascape.stormci.adapters.team
+package dev.danascape.stormci.ui.adapters
 
-import android.R
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.shape.CornerFamily
 import com.squareup.picasso.Picasso
 import dev.danascape.stormci.databinding.FragmentTeamItemBinding
-import dev.danascape.stormci.models.team.Team
+import dev.danascape.stormci.models.Team
 
 
 class TeamListAdapter(val context: Context) : RecyclerView.Adapter<TeamListAdapter.TeamViewHolder>() {

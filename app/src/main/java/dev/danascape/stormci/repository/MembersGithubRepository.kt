@@ -2,8 +2,8 @@ package dev.danascape.stormci.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import dev.danascape.stormci.api.team.TeamService
-import dev.danascape.stormci.models.team.Team
+import dev.danascape.stormci.api.services.TeamService
+import dev.danascape.stormci.models.Team
 import javax.inject.Inject
 
 class MembersGithubRepository @Inject constructor(

@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui
+package dev.danascape.stormci.ui.activities
 
 import android.os.Bundle
 import android.widget.TextView

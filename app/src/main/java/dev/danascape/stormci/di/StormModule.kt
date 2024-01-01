@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.danascape.stormci.api.ci.DroneService
-import dev.danascape.stormci.api.device.DeviceService
-import dev.danascape.stormci.api.team.TeamService
+import dev.danascape.stormci.api.services.DroneService
+import dev.danascape.stormci.api.services.DeviceService
+import dev.danascape.stormci.api.services.TeamService
 import dev.danascape.stormci.util.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

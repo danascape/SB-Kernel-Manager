@@ -1,4 +1,4 @@
-package dev.danascape.stormci.ui.fragments.device
+package dev.danascape.stormci.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
-import dev.danascape.stormci.adapters.device.DeviceListAdapter
+import dev.danascape.stormci.ui.adapters.DeviceListAdapter
 import dev.danascape.stormci.databinding.FragmentDevicesBinding
-import dev.danascape.stormci.models.device.Device
+import dev.danascape.stormci.models.Device
 import dev.danascape.stormci.repository.NetworkResponse
+import dev.danascape.stormci.viewModels.DeviceViewModel
 
 @AndroidEntryPoint
 class DeviceFragment : Fragment(R.layout.fragment_devices) {

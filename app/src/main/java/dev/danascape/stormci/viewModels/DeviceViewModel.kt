@@ -1,10 +1,10 @@
-package dev.danascape.stormci.ui.fragments.device
+package dev.danascape.stormci.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.danascape.stormci.models.device.Device
+import dev.danascape.stormci.models.Device
 import dev.danascape.stormci.repository.DevicesGithubRespository
 import dev.danascape.stormci.repository.NetworkResponse
 import kotlinx.coroutines.Dispatchers

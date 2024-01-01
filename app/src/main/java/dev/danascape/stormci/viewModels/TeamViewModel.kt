@@ -1,25 +1,27 @@
-package dev.danascape.stormci.ui.fragments.build
+package dev.danascape.stormci.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.danascape.stormci.models.build.BuildHistory
-import dev.danascape.stormci.repository.DroneRepository
+import dev.danascape.stormci.models.Team
+import dev.danascape.stormci.repository.MembersGithubRepository
 import dev.danascape.stormci.repository.NetworkResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BuildViewModel @Inject constructor(private val droneRepository: DroneRepository) :
+class TeamViewModel @Inject constructor(private val membersGithubRepository: MembersGithubRepository) :
     ViewModel() {
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            droneRepository.provideBuildHistory()
+            membersGithubRepository.getMembers()
         }
     }
 
-    val buildHistory: LiveData<NetworkResponse<List<BuildHistory>>>
-        get() = droneRepository.buildHistory
+    val MemberList: LiveData<NetworkResponse<List<Team>>>
+        get() = membersGithubRepository.Members
+
 }

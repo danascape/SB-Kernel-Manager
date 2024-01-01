@@ -1,4 +1,4 @@
-package dev.danascape.stormci.adapters.device
+package dev.danascape.stormci.ui.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.DevicesItemBinding
-import dev.danascape.stormci.models.device.Device
+import dev.danascape.stormci.models.Device
 
 class DeviceListAdapter(val context: Context) :
     RecyclerView.Adapter<DeviceListAdapter.DeviceViewHolder>() {

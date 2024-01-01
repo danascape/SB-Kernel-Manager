@@ -1,4 +1,4 @@
-package dev.danascape.stormci.models.device
+package dev.danascape.stormci.models
 
 data class Device(
     val name: String? = null,

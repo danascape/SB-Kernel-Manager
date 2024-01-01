@@ -2,8 +2,8 @@ package dev.danascape.stormci.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import dev.danascape.stormci.api.device.DeviceService
-import dev.danascape.stormci.models.device.Device
+import dev.danascape.stormci.api.services.DeviceService
+import dev.danascape.stormci.models.Device
 import javax.inject.Inject
 
 class DevicesGithubRespository @Inject constructor(private val deviceService: DeviceService) {
