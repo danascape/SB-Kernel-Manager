@@ -15,11 +15,4 @@
         android:menuCategory="secondary"
         android:title="Devices" />
 
-    <item
-        android:id="@+id/teamFragment"
-        android:icon="@drawable/ic_team"
-        android:iconTint="@color/black"
-        android:menuCategory="secondary"
-        android:title="Team" />
-
 </menu>

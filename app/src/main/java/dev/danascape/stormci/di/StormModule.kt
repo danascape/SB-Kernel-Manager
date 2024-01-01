@@ -5,7 +5,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.danascape.stormci.api.services.DeviceService
-import dev.danascape.stormci.api.services.TeamService
 import dev.danascape.stormci.util.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,8 +26,4 @@ object StormModule {
     @Provides
     fun provideDeviceService(@GithubApi retrofit: Retrofit): DeviceService =
         retrofit.create(DeviceService::class.java)
-
-    @Provides
-    fun provideTeamService(@GithubApi retrofit: Retrofit): TeamService =
-        retrofit.create(TeamService::class.java)
 }
