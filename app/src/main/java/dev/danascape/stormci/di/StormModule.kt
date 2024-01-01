@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.danascape.stormci.api.services.DroneService
 import dev.danascape.stormci.api.services.DeviceService
 import dev.danascape.stormci.api.services.TeamService
 import dev.danascape.stormci.util.Constants
@@ -24,19 +23,6 @@ object StormModule {
             .baseUrl(Constants.GITHUB_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-    @Provides
-    @Singleton
-    @DroneApi
-    fun provideDroneRetrofitInstance(): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(Constants.DRONE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-    @Provides
-    fun provideDroneService(@DroneApi retrofit: Retrofit): DroneService =
-        retrofit.create(DroneService::class.java)
 
     @Provides
     fun provideDeviceService(@GithubApi retrofit: Retrofit): DeviceService =
