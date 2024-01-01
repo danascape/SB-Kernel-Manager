@@ -1,4 +1,4 @@
-package dev.danascape.stormci.util
+package dev.danascape.stormci.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

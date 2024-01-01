@@ -1,4 +1,4 @@
-package dev.danascape.stormci.util
+package dev.danascape.stormci.utils
 
 class Constants {
     companion object {

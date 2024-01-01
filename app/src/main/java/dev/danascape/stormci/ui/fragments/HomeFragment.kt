@@ -1,53 +1,66 @@
 package dev.danascape.stormci.ui.fragments
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.databinding.FragmentHomeBinding
-import dev.danascape.stormci.ui.activities.MainActivity
-import dev.danascape.stormci.util.Constants
-import dev.danascape.stormci.util.DeviceUtils.getDeviceProperty
+import dev.danascape.stormci.ui.fragments.base.BaseFragment
+import dev.danascape.stormci.utils.Constants
+import dev.danascape.stormci.utils.DeviceUtils.getDeviceProperty
 import java.util.*
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding
         get() = _binding!!
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val activity: MainActivity? = activity as MainActivity?
+        setDeviceInfo()
 
-        binding.tvLogo.setOnClickListener {
-            Toast.makeText(context, "You pressed to view info", Toast.LENGTH_SHORT).show()
-        }
+        return binding.root
+    }
 
+    @SuppressLint("SetTextI18n")
+    private fun setDeviceInfo() {
         val kernelVersion = getDeviceProperty("uname -r")
-        binding.tvKernel.text = kernelVersion
+        binding.tvKernel.text = "Kernel Version: $kernelVersion"
 
         if (kernelVersion.contains(Constants.KERNEL_NAME.lowercase(Locale.getDefault()))) {
             binding.tvKernelSupport.text = "Device is supported"
-            Toast.makeText(context, "Device is supported", Toast.LENGTH_SHORT).show()
         } else {
             binding.tvKernelSupport.text = "Device is not supported"
-            Toast.makeText(context, "Device is not supported", Toast.LENGTH_SHORT).show()
         }
 
-        val deviceName = getDeviceProperty("getprop ro.product.product.model")
-        binding.tvDeviceName.text = deviceName
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
+            binding.tvAndroid.text = "Version: Android 10"
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.R) {
+            binding.tvAndroid.text = "Version: Android 11"
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.S) {
+            binding.tvAndroid.text = "Version: Android 12"
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.S_V2) {
+            binding.tvAndroid.text = "Version: Android 12L"
+        } else if (Build.VERSION.SDK_INT == 33) {
+            binding.tvAndroid.text = "Version: Android 13"
+        } else if (Build.VERSION.SDK_INT == 34) {
+            binding.tvAndroid.text = "Version: Android 14"
+        } else {
+            binding.tvAndroid.text = "Version: Android Unknown"
+        }
 
-        return binding.root
+        // Build.DEVICE.toString() -> Codename
+        binding.tvManufacturer.text = "Manufacturer: ${Build.BRAND}"
+        val deviceName = getDeviceProperty("getprop ro.product.product.model")
+        binding.tvDeviceName.text = "Device Name: $deviceName"
     }
 }

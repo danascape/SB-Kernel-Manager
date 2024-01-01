@@ -1,16 +1,14 @@
 package dev.danascape.stormci.ui.activities
 
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.elevation.SurfaceColors
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.R
 import dev.danascape.stormci.databinding.ActivityMainBinding
-import dev.danascape.stormci.util.NetworkUtils.isOnline
+import dev.danascape.stormci.utils.NetworkUtils.isOnline
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

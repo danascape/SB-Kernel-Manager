@@ -1,4 +1,4 @@
-package dev.danascape.stormci.util
+package dev.danascape.stormci.utils
 
 import java.io.BufferedReader
 import java.io.InputStream

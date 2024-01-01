@@ -1,16 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.StormCI" parent="Theme.Material3.Dark.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base Theme -->
+    <style name="Theme" />
+
+    <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#C7E7FF</item>
-        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:statusBarColor">@color/black</item>
+
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.StormCI" parent="Theme.Base" />
+
+    <!-- Card View -->
+    <style name="HomeCardView" parent="Widget.Material3.CardView.Filled">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Home.Cut
+        </item>
+    </style>
+
+    <style name="TitleCardView" parent="Widget.Material3.CardView.Filled">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Title.Cut
+        </item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Home.Cut" parent="">
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">30dp</item>
+        <item name="cornerSizeBottomRight">30dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Title.Cut" parent="">
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+    <!-- Text Appearance -->
+    <style name="TextAppearance" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="TextAppearance.Bold" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.StormCI.Button" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Text Input Appearance -->
+    <style name="Widget.StormCI.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.StormCI.TextInputLayout</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.OutlinedBox</item>
+    </style>
+
+    <style name="ThemeOverlay.StormCI.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="hintTextColor">@color/white</item>
+    </style>
+
+    <!-- Widgets Button -->
+    <style name="Theme.Widget.Button" parent="Widget.AppCompat.Button" />
+
+    <style name="Widget.StormCI.Button.Primary" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.StormCI.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemPaddingBottom">10dp</item>
+        <item name="itemPaddingTop">10dp</item>
+        <item name="android:minHeight">68dp</item>
     </style>
 </resources>
