@@ -8,7 +8,17 @@
         android:id="@+id/homeFragment"
         android:name="dev.danascape.stormci.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_deviceinfoFragment"
+            app:destination="@id/deviceinfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deviceinfoFragment"
+        android:name="dev.danascape.stormci.ui.fragments.DeviceInfoFragment"
+        tools:layout="@layout/fragment_device_info" />
+
     <fragment
         android:id="@+id/deviceFragment"
         android:name="dev.danascape.stormci.ui.fragments.DeviceFragment"

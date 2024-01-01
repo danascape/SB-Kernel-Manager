@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.danascape.stormci.databinding.FragmentHomeBinding
 import dev.danascape.stormci.ui.fragments.base.BaseFragment
@@ -28,7 +29,16 @@ class HomeFragment : BaseFragment() {
 
         setDeviceInfo()
 
+        binding.cvDeviceView.setOnClickListener {
+            onDeviceViewClicked()
+        }
+
         return binding.root
+    }
+
+    private fun onDeviceViewClicked() {
+        val action = HomeFragmentDirections.actionHomeFragmentToDeviceinfoFragment()
+        findNavController().navigate(action)
     }
 
     @SuppressLint("SetTextI18n")
