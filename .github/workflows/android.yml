@@ -18,6 +18,6 @@ jobs:
       -
         name: Construction
         run: |
-            git clone -b main --single-branch https://github.com/danascape/StormCIApp.git Build
+            git clone -b main --single-branch https://github.com/danascape/SB-Kernel-Manager.git Build
             cd Build
             ./gradlew build
