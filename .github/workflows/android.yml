@@ -3,21 +3,26 @@ name: "Android CI"
 on:
   pull_request:
     types: [opened, synchronize, edited]
+  push:
+    branches:
+      - '*'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       -
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       -
-        name: "Fetching Materials"
+        name: Setup Java 11
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      -
-        name: Construction
+      - name: Clone Repo
         run: |
             git clone -b main --single-branch https://github.com/danascape/SB-Kernel-Manager.git Build
+      - name: Build App
+        run: |
             cd Build
             ./gradlew build
